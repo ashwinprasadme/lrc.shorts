@@ -44,6 +44,7 @@ export default function LensPane({ type, content, coverImage }: LensPaneProps) {
         ) : (
           // Left or Right view
           <>
+            <h3 className="lens-perspective-header">{typeLabels[type]} Perspective</h3>
             <p className="lens-take">{content.take}</p>
             {content.quotes && content.quotes.length > 0 && (
               <div className="lens-quotes">

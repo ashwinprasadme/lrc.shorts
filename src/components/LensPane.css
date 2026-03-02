@@ -24,7 +24,7 @@
   flex-direction: column;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
 }
 
 .lens-centre {
@@ -54,25 +54,39 @@
   flex: 1;
 }
 
+.lens-perspective-header {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lens-color);
+  margin: 0 0 var(--spacing-lg) 0;
+  opacity: 0.9;
+}
+
 .lens-take {
-  font-size: var(--font-size-lg);
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.75;
   color: var(--color-text);
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--spacing-lg) 0;
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 .lens-summary {
-  font-size: var(--font-size-lg);
+  font-size: 1.125rem;
   color: var(--color-text);
-  line-height: 1.7;
+  line-height: 1.8;
   margin: 0;
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 .lens-quotes {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 /* Color-specific styling */
