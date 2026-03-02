@@ -1,0 +1,50 @@
+.lens-swiper-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+.lens-swiper {
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-md);
+  overflow: visible;
+}
+
+.lens-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.lens-swiper .swiper-wrapper {
+  align-items: flex-start;
+}
+
+.lens-indicator {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-xs);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+}
+
+.lens-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.4;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.lens-indicator-dot[data-active="true"] {
+  opacity: 1;
+  transform: scale(1.3);
+}

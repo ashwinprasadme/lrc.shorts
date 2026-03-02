@@ -1,0 +1,57 @@
+{
+  "slug": "ai-chip-export-rules-tighten",
+  "title": "AI chip export rules tighten",
+  "topic": "Tech & geopolitics",
+  "publishedAt": "2026-03-01T06:30:00Z",
+  "coverImage": "https://picsum.photos/seed/ai-chip/800/640",
+  "neutral": {
+    "summary": "The U.S. government announced new restrictions on AI chip exports to certain countries, aiming to maintain technological advantage in artificial intelligence development."
+  },
+  "left": {
+    "take": "These restrictions show the need for global cooperation on AI development. Hoarding technology won't make us safer - it just widens the digital divide.",
+    "quotes": [
+      {
+        "text": "Technology should unite us, not divide us along geopolitical lines.",
+        "speaker": "Sen. Maria Chen",
+        "sources": [
+          {
+            "name": "Senate Floor Speech",
+            "url": "https://example.com/senate-speech",
+            "date": "2026-02-28"
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "take": "Smart move. We can't let adversaries use our own innovations to threaten national security. America first means protecting our tech edge.",
+    "quotes": [
+      {
+        "text": "Our technological leadership is not negotiable - it's a matter of national security.",
+        "speaker": "Rep. John Crawford",
+        "sources": [
+          {
+            "name": "Press Conference",
+            "url": "https://example.com/press-conf",
+            "date": "2026-02-28"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Reuters",
+      "url": "https://example.com/reuters"
+    },
+    {
+      "name": "Bloomberg",
+      "url": "https://example.com/bloomberg"
+    }
+  ],
+  "meta": {
+    "trendSource": "google_trends",
+    "trendKeyword": "AI chip export",
+    "placeholder": true
+  }
+}

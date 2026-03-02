@@ -1,0 +1,57 @@
+{
+  "slug": "border-security-bill-advances",
+  "title": "Border security bill advances",
+  "topic": "Immigration & security",
+  "publishedAt": "2026-02-28T15:00:00Z",
+  "coverImage": "https://picsum.photos/seed/border/800/640",
+  "neutral": {
+    "summary": "A bipartisan border security bill passed the House committee, allocating funds for technology upgrades and additional personnel at border crossings."
+  },
+  "left": {
+    "take": "Security is important, but this bill ignores the humanitarian crisis. We need comprehensive immigration reform, not just more enforcement.",
+    "quotes": [
+      {
+        "text": "We can secure our borders while treating people with dignity and compassion.",
+        "speaker": "Rep. Carlos Rivera",
+        "sources": [
+          {
+            "name": "Committee Statement",
+            "url": "https://example.com/committee",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "take": "Finally, some common sense! Secure borders are not optional - every nation has the right to control who enters and enforce its laws.",
+    "quotes": [
+      {
+        "text": "Border security is national security. This bill is long overdue.",
+        "speaker": "Rep. Jennifer Walsh",
+        "sources": [
+          {
+            "name": "House Floor Speech",
+            "url": "https://example.com/floor-speech",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Washington Post",
+      "url": "https://example.com/wapo"
+    },
+    {
+      "name": "Fox News",
+      "url": "https://example.com/fox"
+    }
+  ],
+  "meta": {
+    "trendSource": "news_api",
+    "trendKeyword": "border security",
+    "placeholder": true
+  }
+}

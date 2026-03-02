@@ -1,0 +1,57 @@
+{
+  "slug": "school-funding-debate-heats-up",
+  "title": "School funding debate heats up",
+  "topic": "Education policy",
+  "publishedAt": "2026-02-28T18:00:00Z",
+  "coverImage": "https://picsum.photos/seed/school/800/640",
+  "neutral": {
+    "summary": "State legislators are divided over a proposal to increase education funding by $2 billion, with debates focusing on property tax implications."
+  },
+  "left": {
+    "take": "Investing in our kids is investing in our future. The wealthy can afford to pay their fair share so every child gets a quality education.",
+    "quotes": [
+      {
+        "text": "We cannot continue to underfund our schools while giving tax breaks to corporations.",
+        "speaker": "Rep. Lisa Thompson",
+        "sources": [
+          {
+            "name": "State Legislature Hearing",
+            "url": "https://example.com/hearing",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "take": "More money doesn't automatically mean better schools. We need accountability and school choice, not higher taxes on homeowners.",
+    "quotes": [
+      {
+        "text": "Parents, not bureaucrats, should decide where their children go to school.",
+        "speaker": "Sen. Robert Hayes",
+        "sources": [
+          {
+            "name": "Town Hall Meeting",
+            "url": "https://example.com/townhall",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Education Weekly",
+      "url": "https://example.com/edweekly"
+    },
+    {
+      "name": "State Capitol News",
+      "url": "https://example.com/capitol"
+    }
+  ],
+  "meta": {
+    "trendSource": "twitter_trending",
+    "trendKeyword": "school funding",
+    "placeholder": true
+  }
+}

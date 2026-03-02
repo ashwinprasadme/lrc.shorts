@@ -1,0 +1,236 @@
+.lens-pane {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  
+  /* Glassmorphic card effect */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid transparent;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.lens-header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: var(--spacing-lg);
+  z-index: 10;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.lens-pane--left .lens-header {
+  justify-content: flex-start;
+}
+
+.lens-pane--neutral .lens-header {
+  justify-content: center;
+}
+
+.lens-pane--right .lens-header {
+  justify-content: flex-end;
+}
+
+.lens-label {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--lens-color);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lens-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+}
+
+.lens-centre {
+  display: flex;
+  flex-direction: column;
+}
+
+.lens-centre-image {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  background: var(--color-border);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.lens-centre-image + .lens-content {
+  padding-top: var(--spacing-lg);
+}
+
+.lens-centre-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lens-centre-text {
+  flex: 1;
+}
+
+.lens-take {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.lens-summary {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.lens-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* Color-specific styling */
+.lens-pane--left {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.lens-pane--left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(to left, 
+    rgba(107, 141, 214, 0.2), 
+    rgba(107, 141, 214, 0.08),
+    transparent);
+  animation: pulseRight 2s ease-in-out infinite;
+  border-radius: 0 20px 20px 0;
+  z-index: 1;
+}
+
+.lens-pane--left .quote-card {
+  border-left-color: var(--color-left);
+}
+
+.lens-pane--neutral {
+  background: linear-gradient(135deg, 
+    rgba(37, 99, 235, 0.06) 0%, 
+    rgba(107, 141, 214, 0.08) 50%,
+    rgba(255, 153, 51, 0.06) 100%);
+  border: 1px solid rgba(107, 141, 214, 0.2);
+}
+
+.lens-pane--neutral::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(to right, 
+    rgba(37, 99, 235, 0.2), 
+    rgba(37, 99, 235, 0.08),
+    transparent);
+  animation: pulseLeft 2s ease-in-out infinite;
+  border-radius: 20px 0 0 20px;
+  z-index: 1;
+}
+
+.lens-pane--neutral::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(to left, 
+    rgba(255, 153, 51, 0.2), 
+    rgba(255, 153, 51, 0.08),
+    transparent);
+  animation: pulseRight 2s ease-in-out infinite;
+  border-radius: 0 20px 20px 0;
+  z-index: 1;
+}
+
+.lens-pane--neutral .quote-card {
+  border-left-color: var(--color-centre);
+}
+
+.lens-pane--right {
+  background: rgba(255, 153, 51, 0.08);
+  border: 1px solid rgba(255, 153, 51, 0.2);
+}
+
+.lens-pane--right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(to right, 
+    rgba(107, 141, 214, 0.2), 
+    rgba(107, 141, 214, 0.08),
+    transparent);
+  animation: pulseLeft 2s ease-in-out infinite;
+  border-radius: 20px 0 0 20px;
+  z-index: 1;
+}
+
+.lens-pane--right .quote-card {
+  border-left-color: var(--color-right);
+}
+
+@keyframes pulseLeft {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulseRight {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

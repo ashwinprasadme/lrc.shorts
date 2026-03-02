@@ -1,0 +1,33 @@
+.reel-feed {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* Better mobile viewport height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--color-bg);
+}
+
+.reel-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.reel-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+/* Prevent text selection during swipe */
+.reel-swiper .swiper-slide {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Re-enable text selection for interactive elements */
+.reel-swiper .lens-pane,
+.reel-swiper a,
+.reel-swiper button {
+  user-select: auto;
+  -webkit-user-select: auto;
+}

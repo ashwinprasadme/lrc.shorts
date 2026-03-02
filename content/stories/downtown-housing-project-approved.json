@@ -1,0 +1,57 @@
+{
+  "slug": "downtown-housing-project-approved",
+  "title": "Downtown housing project approved",
+  "topic": "Urban development",
+  "publishedAt": "2026-03-01T05:00:00Z",
+  "coverImage": "https://picsum.photos/seed/housing/800/640",
+  "neutral": {
+    "summary": "City council voted 7-4 to approve a new 500-unit housing development in the downtown district, including 100 affordable units."
+  },
+  "left": {
+    "take": "A step forward, but 20% affordable housing is not nearly enough when rent is crushing working families. We need bolder action on the housing crisis.",
+    "quotes": [
+      {
+        "text": "Housing is a human right, not a luxury for the wealthy.",
+        "speaker": "Councilwoman Sarah Martinez",
+        "sources": [
+          {
+            "name": "City Council Meeting",
+            "url": "https://example.com/council",
+            "date": "2026-02-28"
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "take": "Great news for property owners and the tax base. The free market works when we get out of the way and let developers build.",
+    "quotes": [
+      {
+        "text": "This project will create jobs and boost our economy without burdening taxpayers.",
+        "speaker": "Mayor Tom Williams",
+        "sources": [
+          {
+            "name": "Mayor's Statement",
+            "url": "https://example.com/mayor",
+            "date": "2026-02-28"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Local News 5",
+      "url": "https://example.com/local5"
+    },
+    {
+      "name": "City Times",
+      "url": "https://example.com/citytimes"
+    }
+  ],
+  "meta": {
+    "trendSource": "local_news",
+    "trendKeyword": "housing development",
+    "placeholder": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "electric-vehicle-sales-surge",
+  "title": "Electric vehicle sales surge",
+  "topic": "Climate & business",
+  "publishedAt": "2026-02-28T20:00:00Z",
+  "coverImage": "https://picsum.photos/seed/ev-cars/800/640",
+  "neutral": {
+    "summary": "Electric vehicle sales jumped 45% in the last quarter, driven by new models and expanded charging infrastructure across major cities."
+  },
+  "left": {
+    "take": "Good progress, but we need stronger emissions standards and more public transit investment. Can't rely on individual car purchases to save the planet.",
+    "quotes": [
+      {
+        "text": "EVs are part of the solution, but public transportation is the real answer to climate change.",
+        "speaker": "Climate Activist Jamie Lee",
+        "sources": [
+          {
+            "name": "Environmental Summit",
+            "url": "https://example.com/summit",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "right": {
+    "take": "The market is working exactly as it should. Innovation and consumer choice - not government mandates - are driving the transition.",
+    "quotes": [
+      {
+        "text": "American innovation proves that free markets solve problems better than bureaucrats.",
+        "speaker": "Auto Industry Analyst Mike Stevens",
+        "sources": [
+          {
+            "name": "Industry Report",
+            "url": "https://example.com/report",
+            "date": "2026-02-27"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Auto News Daily",
+      "url": "https://example.com/autonews"
+    },
+    {
+      "name": "Green Tech Today",
+      "url": "https://example.com/greentech"
+    }
+  ],
+  "meta": {
+    "trendSource": "google_trends",
+    "trendKeyword": "electric vehicles",
+    "placeholder": true
+  }
+}
