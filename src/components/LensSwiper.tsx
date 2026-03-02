@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Story } from '../lib/content';
@@ -14,12 +14,16 @@ interface LensSwiperProps {
 
 export default function LensSwiper({ story }: LensSwiperProps) {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(1); // Start on neutral (center)
 
   return (
     <div className="lens-swiper-container">
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+        }}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.activeIndex);
         }}
         direction="horizontal"
         slidesPerView={1.06}
@@ -48,9 +52,27 @@ export default function LensSwiper({ story }: LensSwiperProps) {
 
       {/* Visual indicator for lens position */}
       <div className="lens-indicator">
-        <div className="lens-indicator-dot" data-active={swiperRef.current?.activeIndex === 0} style={{ background: 'var(--color-left)' }} />
-        <div className="lens-indicator-dot" data-active={swiperRef.current?.activeIndex === 1} style={{ background: 'var(--color-centre)' }} />
-        <div className="lens-indicator-dot" data-active={swiperRef.current?.activeIndex === 2} style={{ background: 'var(--color-right)' }} />
+        <button 
+          className={`lens-indicator-pill ${activeIndex === 0 ? 'active' : ''}`}
+          onClick={() => swiperRef.current?.slideTo(0)}
+          style={{ '--pill-color': 'var(--color-left)' } as React.CSSProperties}
+        >
+          Left
+        </button>
+        <button 
+          className={`lens-indicator-pill ${activeIndex === 1 ? 'active' : ''}`}
+          onClick={() => swiperRef.current?.slideTo(1)}
+          style={{ '--pill-color': 'var(--color-centre)' } as React.CSSProperties}
+        >
+          Centre
+        </button>
+        <button 
+          className={`lens-indicator-pill ${activeIndex === 2 ? 'active' : ''}`}
+          onClick={() => swiperRef.current?.slideTo(2)}
+          style={{ '--pill-color': 'var(--color-right)' } as React.CSSProperties}
+        >
+          Right
+        </button>
       </div>
     </div>
   );

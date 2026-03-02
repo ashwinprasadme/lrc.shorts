@@ -26,11 +26,7 @@ export default function LensPane({ type, content, coverImage }: LensPaneProps) {
       className={`lens-pane lens-pane--${type}`}
       style={{ '--lens-color': typeColors[type] } as React.CSSProperties}
     >
-      <div className="lens-header">
-        <span className="lens-label">{typeLabels[type]}</span>
-      </div>
-
-      {/* Image outside content padding for full width */}
+      {/* Image sticks to top */}
       {type === 'neutral' && coverImage && (
         <div className="lens-centre-image">
           <img src={coverImage} alt="Story cover" />
