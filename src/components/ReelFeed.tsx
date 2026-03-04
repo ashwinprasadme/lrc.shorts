@@ -18,6 +18,49 @@ export default function ReelFeed({ stories, initialSlide = 0 }: ReelFeedProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
+    const handleLensChange = (mutations: MutationRecord[]) => {
+      if (swiperRef.current) {
+        const activeSlide = swiperRef.current.slides[swiperRef.current.activeIndex];
+        const activeLens = activeSlide?.querySelector('[data-active-lens]')?.getAttribute('data-active-lens');
+        
+        // Disable vertical scrolling when on left or right lens
+        const shouldDisable = activeLens === 'left' || activeLens === 'right';
+        
+        if (shouldDisable) {
+          swiperRef.current.disable();
+        } else {
+          swiperRef.current.enable();
+        }
+      }
+    };
+
+    // Create a single observer for all lens changes
+    const observer = new MutationObserver(handleLensChange);
+    
+    // Function to observe all current lens containers
+    const observeAllLensContainers = () => {
+      const lensContainers = document.querySelectorAll('[data-active-lens]');
+      lensContainers.forEach(container => {
+        observer.observe(container, {
+          attributes: true,
+          attributeFilter: ['data-active-lens']
+        });
+      });
+    };
+
+    // Initial observation
+    observeAllLensContainers();
+
+    // Re-observe when swiper updates (for lazy-loaded slides)
+    const reobserveInterval = setInterval(observeAllLensContainers, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(reobserveInterval);
+    };
+  }, []);
+
+  useEffect(() => {
     // Optional: Update URL when slide changes
     if (swiperRef.current) {
       swiperRef.current.on('slideChange', (swiper) => {

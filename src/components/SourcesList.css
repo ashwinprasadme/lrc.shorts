@@ -29,7 +29,7 @@
   gap: var(--spacing-xs);
   overflow-x: auto;
   overflow-y: hidden;
-  max-width: calc(6 * 24px + 5 * 8px); /* 6 favicons + gaps */
+  max-width: calc(8 * 28px + 7 * 8px); /* 8 favicons + gaps */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
@@ -45,8 +45,8 @@
 
 .source-link {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.6);

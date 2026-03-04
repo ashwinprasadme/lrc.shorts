@@ -16,15 +16,27 @@ export default function LensSwiper({ story }: LensSwiperProps) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(1); // Start on neutral (center)
 
+  // Update data attribute on container to track active lens
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    const index = swiper.activeIndex;
+    setActiveIndex(index);
+    
+    // Update data attribute for parent components to know active lens
+    if (containerRef.current) {
+      const lensType = index === 0 ? 'left' : index === 2 ? 'right' : 'neutral';
+      containerRef.current.setAttribute('data-active-lens', lensType);
+    }
+  };
+
   return (
-    <div className="lens-swiper-container">
+    <div className="lens-swiper-container" ref={containerRef} data-active-lens="neutral">
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        onSlideChange={(swiper) => {
-          setActiveIndex(swiper.activeIndex);
-        }}
+        onSlideChange={handleSlideChange}
         direction="horizontal"
         slidesPerView={1.06}
         centeredSlides={true}

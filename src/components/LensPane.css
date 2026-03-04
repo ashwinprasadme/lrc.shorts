@@ -3,8 +3,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   position: relative;
   
   /* Glassmorphic card effect */
@@ -18,13 +16,33 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
+.lens-pane--neutral {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lens-pane--left,
+.lens-pane--right {
+  overflow-y: hidden;
+}
+
 .lens-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}
+
+.lens-pane--neutral .lens-content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lens-pane--left .lens-content,
+.lens-pane--right .lens-content {
+  overflow-y: hidden;
 }
 
 .lens-centre {
@@ -60,7 +78,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--lens-color);
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--spacing-sm) 0;
   opacity: 0.9;
 }
 
@@ -76,7 +94,7 @@
 .lens-quotes {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 6px;
 }
 
 /* Color-specific styling */
