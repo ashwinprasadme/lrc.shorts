@@ -71,6 +71,7 @@
 
 .lens-centre-text {
   flex: 1;
+  padding: var(--spacing-sm) var(--spacing-xs);
 }
 
 .lens-perspective-header {
@@ -86,12 +87,12 @@
 
 .lens-summary {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.1875rem;
   color: var(--color-text);
   line-height: 1.65;
   margin: 0;
   letter-spacing: -0.005em;
-  font-weight: 450;
+  font-weight: 400;
   font-style: normal;
 }
 
