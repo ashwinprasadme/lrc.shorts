@@ -60,17 +60,8 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--lens-color);
-  margin: 0 0 var(--spacing-lg) 0;
+  margin: 0 0 var(--spacing-md) 0;
   opacity: 0.9;
-}
-
-.lens-take {
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--color-text);
-  margin: 0 0 var(--spacing-lg) 0;
-  letter-spacing: -0.01em;
-  font-weight: 400;
 }
 
 .lens-summary {
@@ -85,8 +76,7 @@
 .lens-quotes {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  gap: var(--spacing-sm);
 }
 
 /* Color-specific styling */

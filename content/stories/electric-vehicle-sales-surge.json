@@ -15,8 +15,41 @@
         "speaker": "Climate Activist Jamie Lee",
         "sources": [
           {
-            "name": "Environmental Summit",
-            "url": "https://example.com/summit",
+            "name": "Economic Times",
+            "url": "https://m.economictimes.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "We're just replacing one kind of car dependency with another. We need trains, not Teslas.",
+        "speaker": "Urban Transit Advocate Maria Santos",
+        "sources": [
+          {
+            "name": "Business Insider",
+            "url": "https://www.businessinsider.in",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Electric cars still require massive mining operations that devastate communities. This isn't sustainability.",
+        "speaker": "Environmental Justice Organizer Kwame Jones",
+        "sources": [
+          {
+            "name": "Moneycontrol",
+            "url": "https://www.moneycontrol.com",
+            "date": "2026-02-26"
+          }
+        ]
+      },
+      {
+        "text": "The charging infrastructure is being built in wealthy neighborhoods while working-class areas are left behind.",
+        "speaker": "Sen. Amanda Foster",
+        "sources": [
+          {
+            "name": "CNBC TV18",
+            "url": "https://www.cnbctv18.com",
             "date": "2026-02-27"
           }
         ]
@@ -31,8 +64,52 @@
         "speaker": "Auto Industry Analyst Mike Stevens",
         "sources": [
           {
-            "name": "Industry Report",
-            "url": "https://example.com/report",
+            "name": "Financial Express",
+            "url": "https://www.financialexpress.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Let people drive what they want. The market will figure it out without government interference.",
+        "speaker": "Rep. Dan Wilson",
+        "sources": [
+          {
+            "name": "Forbes India",
+            "url": "https://www.forbesindia.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "These companies succeeded by building products people actually want, not by chasing subsidies.",
+        "speaker": "Business Columnist Sarah Johnson",
+        "sources": [
+          {
+            "name": "Business Today",
+            "url": "https://www.businesstoday.in",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Competition is driving down prices and improving technology. That's how capitalism works.",
+        "speaker": "Economic Policy Institute Director Tom Richards",
+        "sources": [
+          {
+            "name": "Hindu Business Line",
+            "url": "https://www.thehindubusinessline.com",
+            "date": "2026-02-26"
+          }
+        ]
+      },
+      {
+        "text": "EVs are great, but mandating them is government overreach. Let consumers choose.",
+        "speaker": "Gov. Patricia Reynolds",
+        "sources": [
+          {
+            "name": "Fortune India",
+            "url": "https://www.fortuneindia.com",
             "date": "2026-02-27"
           }
         ]
@@ -41,12 +118,44 @@
   },
   "sources": [
     {
-      "name": "Auto News Daily",
-      "url": "https://example.com/autonews"
+      "name": "Economic Times",
+      "url": "https://m.economictimes.com"
     },
     {
-      "name": "Green Tech Today",
-      "url": "https://example.com/greentech"
+      "name": "Business Insider",
+      "url": "https://www.businessinsider.in"
+    },
+    {
+      "name": "Moneycontrol",
+      "url": "https://www.moneycontrol.com"
+    },
+    {
+      "name": "CNBC TV18",
+      "url": "https://www.cnbctv18.com"
+    },
+    {
+      "name": "Financial Express",
+      "url": "https://www.financialexpress.com"
+    },
+    {
+      "name": "Forbes India",
+      "url": "https://www.forbesindia.com"
+    },
+    {
+      "name": "Business Today",
+      "url": "https://www.businesstoday.in"
+    },
+    {
+      "name": "Hindu Business Line",
+      "url": "https://www.thehindubusinessline.com"
+    },
+    {
+      "name": "Fortune India",
+      "url": "https://www.fortuneindia.com"
+    },
+    {
+      "name": "Moneylife",
+      "url": "https://www.moneylife.in"
     }
   ],
   "meta": {

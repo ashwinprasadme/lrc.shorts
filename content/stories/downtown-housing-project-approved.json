@@ -15,9 +15,42 @@
         "speaker": "Councilwoman Sarah Martinez",
         "sources": [
           {
-            "name": "City Council Meeting",
-            "url": "https://example.com/council",
+            "name": "Hindustan Times",
+            "url": "https://www.hindustantimes.com",
             "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "This project will drive up rents in neighboring areas and displace long-time residents.",
+        "speaker": "Community Organizer Rosa Chen",
+        "sources": [
+          {
+            "name": "India Today",
+            "url": "https://www.indiatoday.in",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "We should be requiring 40% affordable units, minimum. Developers can afford it.",
+        "speaker": "Housing Rights Attorney Mark Davis",
+        "sources": [
+          {
+            "name": "Times of India",
+            "url": "https://timesofindia.indiatimes.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Luxury condos don't solve the housing crisis. We need social housing like they have in Vienna.",
+        "speaker": "Urban Planning Prof. Lisa Wong",
+        "sources": [
+          {
+            "name": "Deccan Herald",
+            "url": "https://www.deccanherald.com",
+            "date": "2026-02-27"
           }
         ]
       }
@@ -31,9 +64,53 @@
         "speaker": "Mayor Tom Williams",
         "sources": [
           {
-            "name": "Mayor's Statement",
-            "url": "https://example.com/mayor",
+            "name": "Business Standard",
+            "url": "https://www.business-standard.com",
             "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "More housing supply means lower prices. Economics 101.",
+        "speaker": "Developer John Mitchell",
+        "sources": [
+          {
+            "name": "Tribune India",
+            "url": "https://www.tribuneindia.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "This kind of private investment revitalizes downtowns and creates tax revenue for schools and services.",
+        "speaker": "Chamber of Commerce President Linda Hayes",
+        "sources": [
+          {
+            "name": "Firstpost",
+            "url": "https://www.firstpost.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Property rights matter. If someone wants to build on their land, government shouldn't micromanage.",
+        "speaker": "Councilman Robert Price",
+        "sources": [
+          {
+            "name": "Outlook India",
+            "url": "https://www.outlookindia.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "This development will bring young professionals downtown and support local businesses.",
+        "speaker": "Real Estate Analyst Karen Smith",
+        "sources": [
+          {
+            "name": "LiveMint",
+            "url": "https://www.livemint.com",
+            "date": "2026-02-27"
           }
         ]
       }
@@ -41,12 +118,44 @@
   },
   "sources": [
     {
-      "name": "Local News 5",
-      "url": "https://example.com/local5"
+      "name": "Hindustan Times",
+      "url": "https://www.hindustantimes.com"
     },
     {
-      "name": "City Times",
-      "url": "https://example.com/citytimes"
+      "name": "India Today",
+      "url": "https://www.indiatoday.in"
+    },
+    {
+      "name": "Times of India",
+      "url": "https://timesofindia.indiatimes.com"
+    },
+    {
+      "name": "Business Standard",
+      "url": "https://www.business-standard.com"
+    },
+    {
+      "name": "Deccan Herald",
+      "url": "https://www.deccanherald.com"
+    },
+    {
+      "name": "Tribune India",
+      "url": "https://www.tribuneindia.com"
+    },
+    {
+      "name": "Firstpost",
+      "url": "https://www.firstpost.com"
+    },
+    {
+      "name": "Outlook India",
+      "url": "https://www.outlookindia.com"
+    },
+    {
+      "name": "LiveMint",
+      "url": "https://www.livemint.com"
+    },
+    {
+      "name": "News18",
+      "url": "https://www.news18.com"
     }
   ],
   "meta": {

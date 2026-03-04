@@ -3,8 +3,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
   pointer-events: auto;
+  max-width: 100%;
   
   /* Floating glassmorphic effect */
   background: rgba(255, 255, 255, 0.25);
@@ -25,7 +26,17 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: calc(6 * 24px + 5 * 8px); /* 6 favicons + gaps */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.sources-items::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .source-item {
@@ -34,17 +45,19 @@
 
 .source-link {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--color-border);
+  background: rgba(255, 255, 255, 0.6);
   transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .source-link:hover,
 .source-link:active {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .source-favicon {

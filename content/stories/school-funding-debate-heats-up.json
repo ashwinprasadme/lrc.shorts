@@ -15,8 +15,52 @@
         "speaker": "Rep. Lisa Thompson",
         "sources": [
           {
-            "name": "State Legislature Hearing",
-            "url": "https://example.com/hearing",
+            "name": "The Quint",
+            "url": "https://www.thequint.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Every child deserves access to art, music, sports, and small class sizes. That costs money.",
+        "speaker": "Teachers Union President Marcus Williams",
+        "sources": [
+          {
+            "name": "Newslaundry",
+            "url": "https://www.newslaundry.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Our schools are crumbling while billionaires get richer. Time to change priorities.",
+        "speaker": "Education Advocate Sandra Lee",
+        "sources": [
+          {
+            "name": "The Caravan",
+            "url": "https://caravanmagazine.in",
+            "date": "2026-02-26"
+          }
+        ]
+      },
+      {
+        "text": "States that invest in education see better economic outcomes. This is about our future competitiveness.",
+        "speaker": "Education Policy Prof. Dr. James Mitchell",
+        "sources": [
+          {
+            "name": "Frontline",
+            "url": "https://frontline.thehindu.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Teachers are leaving the profession because we don't pay them enough. Funding matters.",
+        "speaker": "School Principal Angela Rodriguez",
+        "sources": [
+          {
+            "name": "The Diplomat",
+            "url": "https://thediplomat.com",
             "date": "2026-02-27"
           }
         ]
@@ -31,9 +75,42 @@
         "speaker": "Sen. Robert Hayes",
         "sources": [
           {
-            "name": "Town Hall Meeting",
-            "url": "https://example.com/townhall",
+            "name": "WION",
+            "url": "https://www.wionews.com",
             "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "We've thrown money at this problem for decades. Time to try accountability and competition.",
+        "speaker": "Education Reform Activist David Chen",
+        "sources": [
+          {
+            "name": "The Federal",
+            "url": "https://thefederal.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "School choice and charter schools are delivering better results at lower cost.",
+        "speaker": "Charter School Director Jennifer Martinez",
+        "sources": [
+          {
+            "name": "News Minute",
+            "url": "https://www.thenewsminute.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Property taxes are already crushing families. We can't keep raising them.",
+        "speaker": "Taxpayer Association President Mike Anderson",
+        "sources": [
+          {
+            "name": "Free Press Journal",
+            "url": "https://www.freepressjournal.in",
+            "date": "2026-02-26"
           }
         ]
       }
@@ -41,12 +118,44 @@
   },
   "sources": [
     {
-      "name": "Education Weekly",
-      "url": "https://example.com/edweekly"
+      "name": "The Quint",
+      "url": "https://www.thequint.com"
     },
     {
-      "name": "State Capitol News",
-      "url": "https://example.com/capitol"
+      "name": "Newslaundry",
+      "url": "https://www.newslaundry.com"
+    },
+    {
+      "name": "The Caravan",
+      "url": "https://caravanmagazine.in"
+    },
+    {
+      "name": "Frontline",
+      "url": "https://frontline.thehindu.com"
+    },
+    {
+      "name": "The Diplomat",
+      "url": "https://thediplomat.com"
+    },
+    {
+      "name": "WION",
+      "url": "https://www.wionews.com"
+    },
+    {
+      "name": "The Federal",
+      "url": "https://thefederal.com"
+    },
+    {
+      "name": "News Minute",
+      "url": "https://www.thenewsminute.com"
+    },
+    {
+      "name": "Free Press Journal",
+      "url": "https://www.freepressjournal.in"
+    },
+    {
+      "name": "Republic World",
+      "url": "https://www.republicworld.com"
     }
   ],
   "meta": {

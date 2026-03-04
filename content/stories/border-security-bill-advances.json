@@ -15,8 +15,41 @@
         "speaker": "Rep. Carlos Rivera",
         "sources": [
           {
-            "name": "Committee Statement",
-            "url": "https://example.com/committee",
+            "name": "The Wire",
+            "url": "https://thewire.in",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "This bill is just more walls and surveillance. Where's the pathway to citizenship for dreamers?",
+        "speaker": "Maya Patel, Immigration Rights Advocate",
+        "sources": [
+          {
+            "name": "The Print",
+            "url": "https://theprint.in",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Militarizing the border doesn't address the root causes driving migration - poverty, violence, and climate change.",
+        "speaker": "Dr. Antonio Gomez, Migration Studies",
+        "sources": [
+          {
+            "name": "Al Jazeera",
+            "url": "https://www.aljazeera.com",
+            "date": "2026-02-26"
+          }
+        ]
+      },
+      {
+        "text": "We're spending billions on enforcement while ignoring the economic contributions of immigrants.",
+        "speaker": "Sen. Rachel Cohen",
+        "sources": [
+          {
+            "name": "Washington Post",
+            "url": "https://www.washingtonpost.com",
             "date": "2026-02-27"
           }
         ]
@@ -31,8 +64,52 @@
         "speaker": "Rep. Jennifer Walsh",
         "sources": [
           {
-            "name": "House Floor Speech",
-            "url": "https://example.com/floor-speech",
+            "name": "The Hindu",
+            "url": "https://www.thehindu.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Every country has borders. Every country has the right to enforce them. This should not be controversial.",
+        "speaker": "Gov. Tom Anderson",
+        "sources": [
+          {
+            "name": "Indian Express",
+            "url": "https://indianexpress.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "Legal immigration is great. Illegal immigration is not. It's that simple.",
+        "speaker": "Sheriff Mike Thompson",
+        "sources": [
+          {
+            "name": "NDTV",
+            "url": "https://www.ndtv.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "We cannot have open borders and a welfare state. You pick one.",
+        "speaker": "Policy Analyst David Brooks",
+        "sources": [
+          {
+            "name": "Scroll",
+            "url": "https://scroll.in",
+            "date": "2026-02-26"
+          }
+        ]
+      },
+      {
+        "text": "The American people have been clear: they want secure borders. We're finally delivering.",
+        "speaker": "Sen. Mark Johnson",
+        "sources": [
+          {
+            "name": "Dawn",
+            "url": "https://www.dawn.com",
             "date": "2026-02-27"
           }
         ]
@@ -42,11 +119,43 @@
   "sources": [
     {
       "name": "Washington Post",
-      "url": "https://example.com/wapo"
+      "url": "https://www.washingtonpost.com"
     },
     {
-      "name": "Fox News",
-      "url": "https://example.com/fox"
+      "name": "The Hindu",
+      "url": "https://www.thehindu.com"
+    },
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com"
+    },
+    {
+      "name": "ABC News",
+      "url": "https://news.abplive.com"
+    },
+    {
+      "name": "The Wire",
+      "url": "https://thewire.in"
+    },
+    {
+      "name": "The Print",
+      "url": "https://theprint.in"
+    },
+    {
+      "name": "NDTV",
+      "url": "https://www.ndtv.com"
+    },
+    {
+      "name": "Indian Express",
+      "url": "https://indianexpress.com"
+    },
+    {
+      "name": "Scroll",
+      "url": "https://scroll.in"
+    },
+    {
+      "name": "Dawn",
+      "url": "https://www.dawn.com/"
     }
   ],
   "meta": {

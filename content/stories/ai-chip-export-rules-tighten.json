@@ -15,8 +15,41 @@
         "speaker": "Sen. Maria Chen",
         "sources": [
           {
-            "name": "Senate Floor Speech",
-            "url": "https://example.com/senate-speech",
+            "name": "The Guardian",
+            "url": "https://www.theguardian.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "Export controls are a short-term fix that will backfire. Other nations will simply develop their own chips faster.",
+        "speaker": "Dr. Emily Rodriguez, Tech Policy Expert",
+        "sources": [
+          {
+            "name": "New York Times",
+            "url": "https://www.nytimes.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "We're creating a tech cold war when we should be building international AI safety standards together.",
+        "speaker": "Prof. James Liu, MIT",
+        "sources": [
+          {
+            "name": "Washington Post",
+            "url": "https://www.washingtonpost.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "This policy hurts American companies who rely on global markets for growth and innovation.",
+        "speaker": "Sarah Kim, Silicon Valley Coalition",
+        "sources": [
+          {
+            "name": "Bloomberg",
+            "url": "https://www.bloomberg.com",
             "date": "2026-02-28"
           }
         ]
@@ -31,9 +64,53 @@
         "speaker": "Rep. John Crawford",
         "sources": [
           {
-            "name": "Press Conference",
-            "url": "https://example.com/press-conf",
+            "name": "Reuters",
+            "url": "https://www.reuters.com",
             "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "China is using AI for surveillance and military purposes. We'd be fools to help them.",
+        "speaker": "Admiral Robert Hayes (Ret.)",
+        "sources": [
+          {
+            "name": "Financial Times",
+            "url": "https://www.ft.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "Every advanced chip we export is a potential weapon in the wrong hands. National security comes first.",
+        "speaker": "Sen. Patricia Morgan",
+        "sources": [
+          {
+            "name": "CNN",
+            "url": "https://www.cnn.com",
+            "date": "2026-02-27"
+          }
+        ]
+      },
+      {
+        "text": "American innovation built these chips. We have every right to control who benefits from them.",
+        "speaker": "Michael Chen, Defense Analyst",
+        "sources": [
+          {
+            "name": "BBC",
+            "url": "https://www.bbc.com",
+            "date": "2026-02-28"
+          }
+        ]
+      },
+      {
+        "text": "This is about maintaining our competitive advantage in the most important technology of our time.",
+        "speaker": "Gov. James Wilson",
+        "sources": [
+          {
+            "name": "The Economist",
+            "url": "https://www.economist.com",
+            "date": "2026-02-27"
           }
         ]
       }
@@ -42,11 +119,43 @@
   "sources": [
     {
       "name": "Reuters",
-      "url": "https://example.com/reuters"
+      "url": "https://www.reuters.com"
     },
     {
       "name": "Bloomberg",
-      "url": "https://example.com/bloomberg"
+      "url": "https://www.bloomberg.com"
+    },
+    {
+      "name": "The Guardian",
+      "url": "https://www.theguardian.com"
+    },
+    {
+      "name": "CNN",
+      "url": "https://www.cnn.com"
+    },
+    {
+      "name": "BBC",
+      "url": "https://www.bbc.com"
+    },
+    {
+      "name": "Financial Times",
+      "url": "https://www.ft.com"
+    },
+    {
+      "name": "Washington Post",
+      "url": "https://www.washingtonpost.com"
+    },
+    {
+      "name": "New York Times",
+      "url": "https://www.nytimes.com"
+    },
+    {
+      "name": "The Economist",
+      "url": "https://www.economist.com"
+    },
+    {
+      "name": "DW News",
+      "url": "https://www.dw.com"
     }
   ],
   "meta": {
