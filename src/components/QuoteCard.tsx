@@ -15,17 +15,19 @@ function getFaviconUrl(url: string): string {
 }
 
 export default function QuoteCard({ quote }: QuoteCardProps) {
+  const displaySources = quote.sources?.slice(0, 2) || [];
+  
   return (
     <div className="quote-card">
       <div className="quote-main">
         <blockquote className="quote-text">
-          "{quote.text}"
+          {quote.text}
         </blockquote>
         <div className="quote-footer">
           <span className="quote-speaker">{quote.speaker}</span>
-          {quote.sources && quote.sources.length > 0 && (
+          {displaySources.length > 0 && (
             <div className="quote-sources">
-              {quote.sources.map((source, idx) => (
+              {displaySources.map((source, idx) => (
                 <a
                   key={idx}
                   href={source.url}

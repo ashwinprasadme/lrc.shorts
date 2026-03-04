@@ -42,7 +42,8 @@
 
 .lens-pane--left .lens-content,
 .lens-pane--right .lens-content {
-  overflow-y: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .lens-centre {
@@ -80,21 +81,28 @@
   color: var(--lens-color);
   margin: 0 0 var(--spacing-sm) 0;
   opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .lens-summary {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
   font-size: 1.125rem;
   color: var(--color-text);
-  line-height: 1.8;
+  line-height: 1.65;
   margin: 0;
-  letter-spacing: -0.01em;
-  font-weight: 400;
+  letter-spacing: -0.005em;
+  font-weight: 450;
+  font-style: normal;
 }
 
 .lens-quotes {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 120px;
 }
 
 /* Color-specific styling */

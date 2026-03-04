@@ -1,32 +1,39 @@
 .quote-card {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-left: 2px solid currentColor;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: all 0.2s ease;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 14px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 1px 4px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
 }
 
-.quote-card:hover {
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.quote-card:active {
+  transform: scale(0.98);
+  box-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.06),
+    0 0 2px rgba(0, 0, 0, 0.04);
 }
 
 .quote-main {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .quote-text {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.9375rem;
   line-height: 1.6;
   font-style: italic;
   margin: 0;
   color: var(--color-text);
-  letter-spacing: -0.005em;
+  letter-spacing: 0.01em;
   font-weight: 400;
 }
 
@@ -34,15 +41,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-xs);
+  gap: 12px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: 2px;
 }
 
 .quote-speaker {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text);
-  letter-spacing: -0.01em;
-  opacity: 0.8;
+  letter-spacing: 0.01em;
+  opacity: 0.65;
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -52,30 +63,36 @@
 .quote-sources {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
 .quote-source-link {
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.6);
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.quote-source-link:hover,
 .quote-source-link:active {
-  transform: scale(1.15);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(0.92);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 .quote-source-favicon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
   display: block;
 }
