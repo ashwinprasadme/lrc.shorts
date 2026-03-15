@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — LRC News{% endblock %}
+{% block content %}
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-label">Total stories</div>
+    <div class="stat-value accent">{{ stats.total_stories }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Total articles</div>
+    <div class="stat-value">{{ stats.total_articles }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Stories today</div>
+    <div class="stat-value">{{ stats.stories_today }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">This week</div>
+    <div class="stat-value">{{ stats.stories_week }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Last fetch</div>
+    <div class="stat-value" style="font-size:14px; margin-top:10px; color:var(--muted)">
+      {{ stats.latest_fetch.strftime('%d %b %Y %H:%M') if stats.latest_fetch else 'Never' }}
+    </div>
+  </div>
+</div>
+
+<div class="two-col">
+
+  <!-- Story list -->
+  <div>
+    <div class="section-header">
+      <div class="section-title">Recent stories</div>
+    </div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      {% if stories %}
+      <table class="story-table">
+        <thead>
+          <tr>
+            <th>Headline</th>
+            <th>Source</th>
+            <th>Articles</th>
+            <th>Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for story in stories %}
+          <tr>
+            <td>
+              <a href="/story/{{ story.slug }}" style="color:var(--text); font-weight:500;">
+                {{ story.headline | truncate(90) }}
+              </a>
+            </td>
+            <td>
+              {% if story.primary_source %}
+              <span class="source-badge">{{ story.primary_source }}</span>
+              {% else %}<span style="color:var(--muted)">—</span>{% endif %}
+            </td>
+            <td><span class="count-chip">{{ story.article_count }}</span></td>
+            <td class="ts">
+              {{ story.published_at.strftime('%d %b %H:%M') if story.published_at else '—' }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="empty">No stories yet. Run the scraper to populate the database.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Sources sidebar -->
+  <div>
+    <div class="section-header">
+      <div class="section-title">Top sources</div>
+    </div>
+    <div class="card">
+      {% if stats.top_sources %}
+      {% set max_count = stats.top_sources[0][1] %}
+      <div class="source-bar-list">
+        {% for name, count in stats.top_sources %}
+        <div class="source-bar-item">
+          <div class="source-bar-label">
+            <span style="color:var(--text)">{{ name or 'Unknown' }}</span>
+            <span>{{ count }}</span>
+          </div>
+          <div class="source-bar-track">
+            <div class="source-bar-fill" style="width: {{ ((count / max_count) * 100) | int }}%"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="empty" style="padding:16px 0">No data</div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

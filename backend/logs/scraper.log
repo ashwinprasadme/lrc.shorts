@@ -1,0 +1,6 @@
+2026-03-15 10:15:03,066  INFO      __main__  ── Scrape run started at 2026-03-15 10:15:03 ──
+2026-03-15 10:15:03,066  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 10:15:04,245  INFO      scraper.fetcher  Fetched 58 entries from feed
+2026-03-15 10:15:04,360  INFO      storage.ingestion  Ingested 58 new stories, skipped 0 duplicates
+2026-03-15 10:15:04,413  INFO      exporter  Exported 58 story files to /home/apsv/Documents/Dump/Projects_extended/lrc.news.shorts/git_sources/lrc.shorts/content/stories/scraped
+2026-03-15 10:15:04,414  INFO      __main__  Done — 58 new | 0 skipped | 58 files exported  (1.3s)

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — LRC News</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+      --accent: #6c8ef7; --text: #e2e4ed; --muted: #6b7280;
+      --danger: #f87171; --radius: 8px;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+    }
+    .login-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .login-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .login-sub { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
+    label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px; }
+    input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); color: var(--text); padding: 10px 14px;
+      font-size: 14px; outline: none; margin-bottom: 18px;
+    }
+    input:focus { border-color: var(--accent); }
+    button {
+      width: 100%; background: var(--accent); border: none;
+      border-radius: var(--radius); color: #fff; cursor: pointer;
+      font-size: 14px; font-weight: 600; padding: 11px;
+      margin-top: 4px;
+    }
+    button:hover { opacity: 0.88; }
+    .error {
+      background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248,113,113,0.3);
+      border-radius: var(--radius); color: var(--danger);
+      font-size: 13px; padding: 10px 14px; margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="login-title">LRC <span style="color:#6c8ef7">News</span></div>
+    <div class="login-sub">Sign in to the dashboard</div>
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" autofocus>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password">
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
+</body>
+</html>

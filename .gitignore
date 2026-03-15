@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+venv/ 
+
+content/stories/scraped
