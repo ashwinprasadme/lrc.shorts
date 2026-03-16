@@ -44,6 +44,12 @@ LITELLM_MODEL = os.getenv("LITELLM_MODEL", "gemini/gemini-2.0-flash")
 # How many hours back to search when expanding a story's article list
 ARTICLE_EXPAND_HOURS = int(os.getenv("ARTICLE_EXPAND_HOURS", "48"))
 
+# ── Article selection ─────────────────────────────────────────────────────────
+# Target number of representative articles to keep after expansion
+ARTICLE_SELECT_COUNT = int(os.getenv("ARTICLE_SELECT_COUNT", "25"))
+# Maximum articles from the same publisher in the selected set
+ARTICLE_SOURCE_CAP = int(os.getenv("ARTICLE_SOURCE_CAP", "3"))
+
 # ── Dashboard ─────────────────────────────────────────────────────────────────
 
 DASHBOARD_HOST = os.getenv("DASHBOARD_HOST", "0.0.0.0")

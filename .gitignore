@@ -32,3 +32,6 @@ __pycache__/
 venv/ 
 
 content/stories/scraped
+backend/data/news.db-shm
+backend/data/news.db-wal
+backend/data/news.db

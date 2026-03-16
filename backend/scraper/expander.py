@@ -18,10 +18,11 @@ from datetime import datetime, timezone
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from config import ARTICLE_EXPAND_HOURS
+from config import ARTICLE_EXPAND_HOURS, ARTICLE_SELECT_COUNT, ARTICLE_SOURCE_CAP
 from scraper.fetcher import fetch_search_articles
 from scraper.parser import parse_search_entries
 from scraper.query_builder import build_search_query
+from scraper.selector import select_articles
 from storage.db import get_session
 from storage.ingestion import expand_story_articles
 from storage.models import Story
@@ -108,15 +109,34 @@ def _expand_one(story: Story) -> int:
     # Step 3 — Parse search entries (individual articles, not clusters)
     candidates = parse_search_entries(entries)
 
-    # Step 4 — Deduplicate against what's already stored and insert
+    # Step 4 — Build full combined pool (existing + fresh), run selection
     existing_urls = {a.url for a in story.articles}
-    fresh = [a for a in candidates if a["url"] not in existing_urls]
+    existing_as_dicts = [
+        {
+            "title": a.title,
+            "url": a.url,
+            "source_name": a.source_name,
+            "position": a.position,
+            "is_lead": a.is_lead,
+        }
+        for a in story.articles
+    ]
+    pool = existing_as_dicts + [a for a in candidates if a["url"] not in existing_urls]
 
-    if not fresh:
+    # Step 5 — Select representative articles, then persist only net-new ones
+    selected = select_articles(
+        articles=pool,
+        story_headline=story.headline,
+        target=ARTICLE_SELECT_COUNT,
+        source_cap=ARTICLE_SOURCE_CAP,
+    )
+    to_add = [a for a in selected if a["url"] not in existing_urls]
+
+    if not to_add:
         return 0
 
     return expand_story_articles(
         story_id=story.id,
-        articles=fresh,
+        articles=to_add,
         start_position=len(story.articles),
     )
