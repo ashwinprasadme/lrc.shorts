@@ -1,0 +1,1 @@
+I want to download all the featured images from the articles and download them to a local folder. To be safer, convert all the images into jpeg before saving it. The links to these images should also be integrated into the orm, such that they can be easily referenced for other downstream tasks.

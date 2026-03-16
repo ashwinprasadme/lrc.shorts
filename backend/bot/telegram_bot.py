@@ -29,6 +29,7 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 from config import TELEGRAM_ALLOWED_USERS, TELEGRAM_BOT_TOKEN
+from scraper.expander import expand_recent_stories
 from storage.db import get_session, init_db
 from storage.models import Article, Story
 
@@ -75,6 +76,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "/search \\<query\\> — search headlines\n"
         "/story \\<slug\\> — story detail \\+ all sources\n"
         "/sources — top 10 source outlets\n"
+        "/expand \\[hours\\] — expand articles for recent stories \\(default 24h\\)\n"
     )
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN_V2)
 
@@ -257,6 +259,26 @@ async def cmd_sources(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
     await update.message.reply_text("\n".join(lines), parse_mode=ParseMode.MARKDOWN_V2)
 
 
+async def cmd_expand(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not _allowed(update):
+        return await _deny(update)
+
+    hours = 24
+    if context.args:
+        try:
+            hours = max(1, min(int(context.args[0]), 168))
+        except ValueError:
+            await update.message.reply_text("Usage: /expand [hours] (1–168)")
+            return
+
+    since = datetime.now(timezone.utc) - timedelta(hours=hours)
+    await update.message.reply_text(f"Expanding articles for stories from the last {hours}h… this may take a moment.")
+
+    added = expand_recent_stories(since=since)
+
+    await update.message.reply_text(f"Done\. `+{added}` articles added\." , parse_mode=ParseMode.MARKDOWN_V2)
+
+
 # ── Bot startup ───────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -279,6 +301,7 @@ def main() -> None:
     app.add_handler(CommandHandler("search", cmd_search))
     app.add_handler(CommandHandler("story", cmd_story))
     app.add_handler(CommandHandler("sources", cmd_sources))
+    app.add_handler(CommandHandler("expand", cmd_expand))
 
     logger.info("Bot started. Polling…")
     app.run_polling(allowed_updates=Update.ALL_TYPES)

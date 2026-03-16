@@ -11,7 +11,7 @@ Usage
 import argparse
 import logging
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 from config import LOG_DIR
 from exporter import export_recent
@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 
 
 def run_scrape(dry_run: bool = False) -> None:
-    start = datetime.now()
+    start = datetime.now(timezone.utc)
     logger.info("Scrape started at %s", start.strftime("%Y-%m-%d %H:%M:%S"))
 
     entries = fetch_feed()
@@ -49,9 +49,10 @@ def run_scrape(dry_run: bool = False) -> None:
         return
 
     new, skipped = ingest(stories)
+
     exported = export_recent()
 
-    elapsed = (datetime.now() - start).total_seconds()
+    elapsed = (datetime.now(timezone.utc) - start).total_seconds()
     logger.info(
         "Done -- %d new | %d skipped | %d exported  (%.1fs)",
         new, skipped, exported, elapsed,

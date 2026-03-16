@@ -27,6 +27,14 @@
   </div>
 </div>
 
+<div class="actions-bar">
+  <button id="scrape-btn" class="btn-action" onclick="runScrape()">&#9654; Run scrape</button>
+  <div id="job-status" class="job-status">
+    <span id="job-spinner" class="spinner" style="display:none"></span>
+    <span id="job-text"></span>
+  </div>
+</div>
+
 <div class="two-col">
 
   <!-- Story list -->
@@ -100,4 +108,64 @@
   </div>
 
 </div>
+
+<script>
+let _pollTimer = null, _elapsedTimer = null, _startTime = 0, _curLabel = '';
+
+function _setBusy(busy) {
+  document.getElementById('scrape-btn').disabled = busy;
+}
+
+function _setStatus(cls, text, showSpinner) {
+  const wrap = document.getElementById('job-status');
+  wrap.className = 'job-status ' + cls;
+  document.getElementById('job-spinner').style.display = showSpinner ? 'inline-block' : 'none';
+  document.getElementById('job-text').textContent = text;
+}
+
+function _startJob(label) {
+  _startTime = Date.now(); _curLabel = label;
+  clearInterval(_elapsedTimer);
+  _setStatus('running', label + ' (0s)', true);
+  _elapsedTimer = setInterval(() => {
+    const s = Math.round((Date.now() - _startTime) / 1000);
+    document.getElementById('job-text').textContent = _curLabel + ` (${s}s)`;
+  }, 1000);
+}
+
+function _finish(ok, msg) {
+  clearInterval(_elapsedTimer);
+  clearInterval(_pollTimer);
+  _setBusy(false);
+  _setStatus(ok ? 'done' : 'error', msg, false);
+}
+
+function _poll(jobId) {
+  clearInterval(_pollTimer);
+  _pollTimer = setInterval(async () => {
+    try {
+      const r = await fetch('/job/' + jobId);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      if (j.status === 'done') {
+        const d = j.result;
+        _finish(true, `\u2713 ${d.new} new \u00b7 ${d.skipped} skipped \u00b7 ${d.exported} exported`);
+      } else if (j.status === 'error') {
+        _finish(false, '\u2717 ' + j.error);
+      }
+    } catch(e) { _finish(false, '\u2717 Status check failed: ' + e.message); }
+  }, 3000);
+}
+
+async function runScrape() {
+  _setBusy(true);
+  _startJob('Scraping\u2026');
+  try {
+    const r = await fetch('/scrape', { method: 'POST' });
+    if (r.status === 409) { _finish(false, '\u2717 Another job is still running'); return; }
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    _poll((await r.json()).job_id);
+  } catch(e) { _finish(false, '\u2717 ' + e.message); }
+}
+</script>
 {% endblock %}

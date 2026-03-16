@@ -1,0 +1,122 @@
+"""
+Story article expander.
+
+For each recently-ingested story, this module:
+  1. Builds a focused Google News RSS search query using an LLM
+     (scraper.query_builder.build_search_query).
+  2. Fetches matching articles published within the last ARTICLE_EXPAND_HOURS
+     hours via the Google News RSS search endpoint.
+  3. Parses the search result entries into article dicts.
+  4. Merges them into the story's article list, skipping duplicates by URL.
+
+Entry point:  expand_recent_stories(since)
+"""
+
+import logging
+from datetime import datetime, timezone
+
+from sqlalchemy import select
+from sqlalchemy.orm import selectinload
+
+from config import ARTICLE_EXPAND_HOURS
+from scraper.fetcher import fetch_search_articles
+from scraper.parser import parse_search_entries
+from scraper.query_builder import build_search_query
+from storage.db import get_session
+from storage.ingestion import expand_story_articles
+from storage.models import Story
+
+logger = logging.getLogger(__name__)
+
+
+def expand_story_by_slug(slug: str) -> int:
+    """
+    Expand article list for a single story identified by slug.
+
+    Returns the number of new articles added, or raises ValueError if the
+    slug is not found.
+    """
+    with get_session() as session:
+        story = (
+            session.execute(
+                select(Story)
+                .options(selectinload(Story.articles))
+                .where(Story.slug == slug)
+            )
+            .scalar_one_or_none()
+        )
+
+    if story is None:
+        raise ValueError(f"Story not found: {slug!r}")
+
+    added = _expand_one(story)
+    if added:
+        logger.info("+%d articles → %s", added, story.slug)
+    return added
+
+
+def expand_recent_stories(since: datetime) -> int:
+    """
+    Expand article lists for all stories first fetched at or after `since`.
+
+    Each story gets one LLM call (to build the query) and one RSS fetch.
+    Articles already present (matched by URL) are silently skipped.
+
+    Returns the total number of new articles added across all stories.
+    """
+    with get_session() as session:
+        stories = (
+            session.execute(
+                select(Story)
+                .options(selectinload(Story.articles))
+                .where(Story.fetched_at >= since)
+                .order_by(Story.published_at.desc())
+            )
+            .scalars()
+            .all()
+        )
+
+    if not stories:
+        logger.info("No new stories to expand")
+        return 0
+
+    logger.info("Expanding articles for %d new stories", len(stories))
+    total_added = 0
+
+    for story in stories:
+        try:
+            added = _expand_one(story)
+            total_added += added
+            if added:
+                logger.info("  +%d articles → %s", added, story.slug)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Expansion failed for %r: %s", story.slug, exc)
+
+    return total_added
+
+
+def _expand_one(story: Story) -> int:
+    """Expand a single story's article list. Returns count of new articles added."""
+    article_titles = [a.title for a in story.articles]
+
+    # Step 1 — LLM builds a focused query from the story context
+    query = build_search_query(story.headline, article_titles)
+
+    # Step 2 — Fetch matching articles from Google News RSS search
+    entries = fetch_search_articles(query, when_hours=ARTICLE_EXPAND_HOURS)
+
+    # Step 3 — Parse search entries (individual articles, not clusters)
+    candidates = parse_search_entries(entries)
+
+    # Step 4 — Deduplicate against what's already stored and insert
+    existing_urls = {a.url for a in story.articles}
+    fresh = [a for a in candidates if a["url"] not in existing_urls]
+
+    if not fresh:
+        return 0
+
+    return expand_story_articles(
+        story_id=story.id,
+        articles=fresh,
+        start_position=len(story.articles),
+    )

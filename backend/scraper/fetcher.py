@@ -7,6 +7,7 @@ from feedparser. Handles transient network errors with a simple retry.
 
 import logging
 import time
+import urllib.parse
 
 import feedparser
 
@@ -54,3 +55,20 @@ def fetch_feed(url: str = INDIA_FEED_URL, retries: int = 3) -> list:
     raise RuntimeError(
         f"All {retries} attempts to fetch feed failed"
     ) from last_exc
+
+
+def fetch_search_articles(query: str, when_hours: int = 48) -> list:
+    """
+    Search Google News RSS for articles matching `query` published within
+    the last `when_hours` hours.
+
+    The `when:Nh` operator is appended to the query automatically.  Google
+    News RSS supports h (hours), d (days), m (months).
+
+    Returns raw feedparser entry objects.
+    """
+    full_query = f"{query} when:{when_hours}h"
+    q = urllib.parse.quote_plus(full_query)
+    url = f"https://news.google.com/rss/search?q={q}&hl=en-IN&gl=IN&ceid=IN:en"
+    logger.info("Searching RSS: %s", full_query)
+    return fetch_feed(url)

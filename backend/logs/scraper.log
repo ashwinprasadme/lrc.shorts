@@ -4,3 +4,537 @@
 2026-03-15 10:15:04,360  INFO      storage.ingestion  Ingested 58 new stories, skipped 0 duplicates
 2026-03-15 10:15:04,413  INFO      exporter  Exported 58 story files to /home/apsv/Documents/Dump/Projects_extended/lrc.news.shorts/git_sources/lrc.shorts/content/stories/scraped
 2026-03-15 10:15:04,414  INFO      __main__  Done — 58 new | 0 skipped | 58 files exported  (1.3s)
+2026-03-15 19:53:28,783  INFO      __main__  Scrape started at 2026-03-15 18:53:28
+2026-03-15 19:53:28,783  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:29,944  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 19:53:30,036  INFO      storage.ingestion  Ingested 56 new stories, skipped 0 duplicates
+2026-03-15 19:53:30,051  INFO      scraper.expander  Expanding articles for 56 new stories
+2026-03-15 19:53:30,062  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:30,072  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:30,073  INFO      scraper.fetcher  Searching RSS: "Asia’s Largest Tulip Festival To Begin On March 16" when:48h
+2026-03-15 19:53:30,073  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Asia%E2%80%99s+Largest+Tulip+Festival+To+Begin+On+March+16%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:30,457  INFO      scraper.fetcher  Fetched 5 entries from feed
+2026-03-15 19:53:30,465  INFO      storage.ingestion  Added 4 new articles to story 41
+2026-03-15 19:53:30,475  INFO      scraper.expander    +4 articles → asias-largest-tulip-festival-to-begin-on-march-16-all-you-need-to-know
+2026-03-15 19:53:30,479  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:30,498  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:30,498  INFO      scraper.fetcher  Searching RSS: "NHAI increases rate of the FASTag Annual pass" when:48h
+2026-03-15 19:53:30,498  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22NHAI+increases+rate+of+the+FASTag+Annual+pass%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:30,890  INFO      scraper.fetcher  Fetched 16 entries from feed
+2026-03-15 19:53:30,892  INFO      storage.ingestion  Added 15 new articles to story 14
+2026-03-15 19:53:30,899  INFO      scraper.expander    +15 articles → nhai-increases-rate-of-the-fastag-annual-pass-what-has-changed
+2026-03-15 19:53:30,900  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:30,907  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:30,907  INFO      scraper.fetcher  Searching RSS: "Thrill for speed turns fatal in Gujarat" when:48h
+2026-03-15 19:53:30,907  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Thrill+for+speed+turns+fatal+in+Gujarat%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:31,293  INFO      scraper.fetcher  Fetched 9 entries from feed
+2026-03-15 19:53:31,295  INFO      storage.ingestion  Added 9 new articles to story 17
+2026-03-15 19:53:31,303  INFO      scraper.expander    +9 articles → thrill-for-speed-turns-fatal-in-gujarat-2-killed-in-speeding-car-accident-after-
+2026-03-15 19:53:31,304  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:31,312  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:31,312  INFO      scraper.fetcher  Searching RSS: "India news: Army claims Pakistani militant killed in Kashmir" when:48h
+2026-03-15 19:53:31,312  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22India+news%3A+Army+claims+Pakistani+militant+killed+in+Kashmir%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:31,678  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:31,680  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:31,705  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:31,705  INFO      scraper.fetcher  Searching RSS: "13-years of suffering to come to an end" when:48h
+2026-03-15 19:53:31,705  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%2213-years+of+suffering+to+come+to+an+end%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:31,959  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:31,962  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:31,983  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:31,984  INFO      scraper.fetcher  Searching RSS: "Tamil Nadu Assembly elections 2026" when:48h
+2026-03-15 19:53:31,984  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Tamil+Nadu+Assembly+elections+2026%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:32,493  INFO      scraper.fetcher  Fetched 87 entries from feed
+2026-03-15 19:53:32,496  INFO      storage.ingestion  Added 86 new articles to story 1
+2026-03-15 19:53:32,504  INFO      scraper.expander    +86 articles → tamil-nadu-assembly-elections-2026-full-schedule
+2026-03-15 19:53:32,505  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:32,511  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:32,512  INFO      scraper.fetcher  Searching RSS: "Tamil Nadu To Vote On April 23" when:48h
+2026-03-15 19:53:32,512  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Tamil+Nadu+To+Vote+On+April+23%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:32,819  INFO      scraper.fetcher  Fetched 8 entries from feed
+2026-03-15 19:53:32,823  INFO      storage.ingestion  Added 7 new articles to story 7
+2026-03-15 19:53:32,831  INFO      scraper.expander    +7 articles → tamil-nadu-to-vote-on-april-23-dmk-vs-aiadmk-again-but-can-wild-card-vijays-tvk-
+2026-03-15 19:53:32,834  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:32,851  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:32,851  INFO      scraper.fetcher  Searching RSS: "Kerala lottery Samrudhi SM-46 result today 15/03/2026" when:48h
+2026-03-15 19:53:32,851  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Kerala+lottery+Samrudhi+SM-46+result+today+15%2F03%2F2026%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:33,212  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:33,214  INFO      storage.ingestion  Added 1 new articles to story 15
+2026-03-15 19:53:33,223  INFO      scraper.expander    +1 articles → kerala-lottery-samrudhi-sm-46-result-today-15032026-1-cr-first-prize-for-mv-2166
+2026-03-15 19:53:33,226  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:33,250  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:33,251  INFO      scraper.fetcher  Searching RSS: "Rahul Gandhi demands Bharat Ratna for Kanshi Ram" when:48h
+2026-03-15 19:53:33,251  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Rahul+Gandhi+demands+Bharat+Ratna+for+Kanshi+Ram%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:33,632  INFO      scraper.fetcher  Fetched 15 entries from feed
+2026-03-15 19:53:33,634  INFO      storage.ingestion  Added 15 new articles to story 21
+2026-03-15 19:53:33,640  INFO      scraper.expander    +15 articles → rahul-gandhi-demands-bharat-ratna-for-kanshi-ram
+2026-03-15 19:53:33,641  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:33,648  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:33,649  INFO      scraper.fetcher  Searching RSS: "India is unlikely to be part of any multinational coalition" when:48h
+2026-03-15 19:53:33,649  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22India+is+unlikely+to+be+part+of+any+multinational+coalition%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:34,040  INFO      scraper.fetcher  Fetched 4 entries from feed
+2026-03-15 19:53:34,042  INFO      storage.ingestion  Added 3 new articles to story 6
+2026-03-15 19:53:34,051  INFO      scraper.expander    +3 articles → india-is-unlikely-to-be-part-of-any-multinational-coalition-on-strait-of-hormuz
+2026-03-15 19:53:34,053  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:34,074  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:34,074  INFO      scraper.fetcher  Searching RSS: "What Election Commission Said On Mamata Banerjee's DA Move" when:48h
+2026-03-15 19:53:34,075  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22What+Election+Commission+Said+On+Mamata+Banerjee%27s+DA+Move%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:34,436  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:34,437  INFO      storage.ingestion  Added 2 new articles to story 2
+2026-03-15 19:53:34,443  INFO      scraper.expander    +2 articles → what-election-commission-said-on-mamata-banerjees-da-move-before-polls
+2026-03-15 19:53:34,444  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:34,453  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:34,453  INFO      scraper.fetcher  Searching RSS: "Delhi High Court CJ Rejects Arvind Kejriwal's Plea To" when:48h
+2026-03-15 19:53:34,453  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Delhi+High+Court+CJ+Rejects+Arvind+Kejriwal%27s+Plea+To%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:34,754  INFO      scraper.fetcher  Fetched 4 entries from feed
+2026-03-15 19:53:34,764  INFO      storage.ingestion  Added 3 new articles to story 20
+2026-03-15 19:53:34,773  INFO      scraper.expander    +3 articles → delhi-high-court-cj-rejects-arvind-kejriwals-plea-to-transfer-cbis-excise-policy
+2026-03-15 19:53:34,774  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:34,789  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:34,789  INFO      scraper.fetcher  Searching RSS: "Rahul Gandhi sips tea, eats pakoras on Parliament steps" when:48h
+2026-03-15 19:53:34,789  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Rahul+Gandhi+sips+tea%2C+eats+pakoras+on+Parliament+steps%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:35,171  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:35,174  INFO      storage.ingestion  Added 5 new articles to story 39
+2026-03-15 19:53:35,183  INFO      scraper.expander    +5 articles → rahul-gandhi-sips-tea-eats-pakoras-on-parliament-steps-amit-shahs-big-attack
+2026-03-15 19:53:35,185  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:35,203  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:35,203  INFO      scraper.fetcher  Searching RSS: "Right swipe or card swipe? How a ‘date scam’ racket duped" when:48h
+2026-03-15 19:53:35,203  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Right+swipe+or+card+swipe%3F+How+a+%E2%80%98date+scam%E2%80%99+racket+duped%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:35,466  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:35,468  INFO      storage.ingestion  Added 1 new articles to story 28
+2026-03-15 19:53:35,476  INFO      scraper.expander    +1 articles → right-swipe-or-card-swipe-how-a-date-scam-racket-duped-men-women-of-15-40k-in-mu
+2026-03-15 19:53:35,478  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:35,498  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:35,498  INFO      scraper.fetcher  Searching RSS: "Kashmir higher reaches receive fresh snow, rains lash plains" when:48h
+2026-03-15 19:53:35,498  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Kashmir+higher+reaches+receive+fresh+snow%2C+rains+lash+plains%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:35,975  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:35,977  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:36,001  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:36,001  INFO      scraper.fetcher  Searching RSS: "₹597-cr IDFC First Bank scam" when:48h
+2026-03-15 19:53:36,001  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22%E2%82%B9597-cr+IDFC+First+Bank+scam%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:36,401  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:36,410  INFO      storage.ingestion  Added 5 new articles to story 22
+2026-03-15 19:53:36,419  INFO      scraper.expander    +5 articles → 597-cr-idfc-first-bank-scam-how-haryana-govt-money-was-routed-via-realtor-jewell
+2026-03-15 19:53:36,421  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:36,430  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:36,430  INFO      scraper.fetcher  Searching RSS: "Pune: Mob assaults 14 men during Ramzan iftar near Bopdev" when:48h
+2026-03-15 19:53:36,430  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Pune%3A+Mob+assaults+14+men+during+Ramzan+iftar+near+Bopdev%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:36,696  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:36,698  INFO      storage.ingestion  Added 1 new articles to story 32
+2026-03-15 19:53:36,706  INFO      scraper.expander    +1 articles → pune-mob-assaults-14-men-during-ramzan-iftar-near-bopdev-ghat-100150-booked
+2026-03-15 19:53:36,709  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:36,731  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:36,732  INFO      scraper.fetcher  Searching RSS: "Environment ministry endorses names of 10-member expert" when:48h
+2026-03-15 19:53:36,732  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Environment+ministry+endorses+names+of+10-member+expert%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:37,104  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:37,107  INFO      storage.ingestion  Added 2 new articles to story 12
+2026-03-15 19:53:37,115  INFO      scraper.expander    +2 articles → environment-ministry-endorses-names-of-10-member-expert-committee-set-up-to-defi
+2026-03-15 19:53:37,117  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:37,143  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:37,143  INFO      scraper.fetcher  Searching RSS: "FIR confidential, can't give to accused" when:48h
+2026-03-15 19:53:37,143  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22FIR+confidential%2C+can%27t+give+to+accused%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:37,525  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:37,528  INFO      storage.ingestion  Added 5 new articles to story 23
+2026-03-15 19:53:37,540  INFO      scraper.expander    +5 articles → fir-confidential-cant-give-to-accused-police-to-delhi-hc-after-detained-students
+2026-03-15 19:53:37,541  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:37,549  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:37,550  INFO      scraper.fetcher  Searching RSS: "Ex-IAS officer says this Indian state has ‘Beaches cleaner" when:48h
+2026-03-15 19:53:37,550  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Ex-IAS+officer+says+this+Indian+state+has+%E2%80%98Beaches+cleaner%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:37,919  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:37,921  INFO      storage.ingestion  Added 2 new articles to story 25
+2026-03-15 19:53:37,928  INFO      scraper.expander    +2 articles → ex-ias-officer-says-this-indian-state-has-beaches-cleaner-than-many-european-coa
+2026-03-15 19:53:37,930  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:37,941  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:37,941  INFO      scraper.fetcher  Searching RSS: "One more arrested in West Bengal in Osman Hadi murder case;" when:48h
+2026-03-15 19:53:37,941  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22One+more+arrested+in+West+Bengal+in+Osman+Hadi+murder+case%3B%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:38,253  INFO      scraper.fetcher  Fetched 9 entries from feed
+2026-03-15 19:53:38,256  INFO      storage.ingestion  Added 8 new articles to story 56
+2026-03-15 19:53:38,264  INFO      scraper.expander    +8 articles → one-more-arrested-in-west-bengal-in-osman-hadi-murder-case-total-held-rises-to-t
+2026-03-15 19:53:38,265  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:38,276  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:38,276  INFO      scraper.fetcher  Searching RSS: "Cocaine bust at farmhouse party in Hyderabad" when:48h
+2026-03-15 19:53:38,276  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Cocaine+bust+at+farmhouse+party+in+Hyderabad%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:38,749  INFO      scraper.fetcher  Fetched 9 entries from feed
+2026-03-15 19:53:38,750  INFO      storage.ingestion  Added 8 new articles to story 3
+2026-03-15 19:53:38,757  INFO      scraper.expander    +8 articles → cocaine-bust-at-farmhouse-party-in-hyderabad-after-brs-ex-mla-pilot-rohith-reddy
+2026-03-15 19:53:38,757  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:38,765  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:38,765  INFO      scraper.fetcher  Searching RSS: "BJP offers Deputy CM post to Vijay, 80 seats to TVK for Tamil Nadu polls" when:48h
+2026-03-15 19:53:38,765  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22BJP+offers+Deputy+CM+post+to+Vijay%2C+80+seats+to+TVK+for+Tamil+Nadu+polls%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:39,262  INFO      scraper.fetcher  Fetched 5 entries from feed
+2026-03-15 19:53:39,264  INFO      storage.ingestion  Added 5 new articles to story 16
+2026-03-15 19:53:39,271  INFO      scraper.expander    +5 articles → bjp-offers-deputy-cm-post-to-vijay-80-seats-to-tvk-for-tamil-nadu-polls-sources
+2026-03-15 19:53:39,272  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:39,281  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:39,281  INFO      scraper.fetcher  Searching RSS: "New colourful sheets on Vande Bharat Sleeper Express trains impresses internet" when:48h
+2026-03-15 19:53:39,281  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22New+colourful+sheets+on+Vande+Bharat+Sleeper+Express+trains+impresses+internet%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:39,679  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:39,681  INFO      storage.ingestion  Added 5 new articles to story 50
+2026-03-15 19:53:39,688  INFO      scraper.expander    +5 articles → new-colourful-sheets-on-vande-bharat-sleeper-express-trains-impresses-internet-n
+2026-03-15 19:53:39,690  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:39,700  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:39,701  INFO      scraper.fetcher  Searching RSS: "Flight status update on March 15" when:48h
+2026-03-15 19:53:39,701  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Flight+status+update+on+March+15%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:39,968  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:39,970  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:39,996  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:39,996  INFO      scraper.fetcher  Searching RSS: "LPG cylinder price today, 15 March" when:48h
+2026-03-15 19:53:39,996  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22LPG+cylinder+price+today%2C+15+March%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:40,393  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:40,396  INFO      storage.ingestion  Added 5 new articles to story 42
+2026-03-15 19:53:40,406  INFO      scraper.expander    +5 articles → lpg-cylinder-price-today-15-march-check-latest-rates-in-your-citydelhi-mumbai-be
+2026-03-15 19:53:40,408  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:40,430  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:40,430  INFO      scraper.fetcher  Searching RSS: "Saturn Sets In Pisces, These 3 Zodiac Signs That May" when:48h
+2026-03-15 19:53:40,430  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Saturn+Sets+In+Pisces%2C+These+3+Zodiac+Signs+That+May%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:40,791  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:40,793  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:40,818  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:40,818  INFO      scraper.fetcher  Searching RSS: "Delhi-NCR Wake Up To Light Rain, Thunderstorms, More" when:48h
+2026-03-15 19:53:40,819  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Delhi-NCR+Wake+Up+To+Light+Rain%2C+Thunderstorms%2C+More%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:41,203  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:41,206  INFO      storage.ingestion  Added 1 new articles to story 8
+2026-03-15 19:53:41,213  INFO      scraper.expander    +1 articles → delhi-ncr-wake-up-to-light-rain-thunderstorms-more-showers-likely
+2026-03-15 19:53:41,216  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:41,240  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:41,240  INFO      scraper.fetcher  Searching RSS: "BJP indulging in horse-trading to win Rajya Sabha election;" when:48h
+2026-03-15 19:53:41,240  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22BJP+indulging+in+horse-trading+to+win+Rajya+Sabha+election%3B%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:41,652  INFO      scraper.fetcher  Fetched 20 entries from feed
+2026-03-15 19:53:41,654  INFO      storage.ingestion  Added 19 new articles to story 26
+2026-03-15 19:53:41,661  INFO      scraper.expander    +19 articles → bjp-indulging-in-horse-trading-to-win-rajya-sabha-election-former-cm-naveen-patn
+2026-03-15 19:53:41,662  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:41,669  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:41,670  INFO      scraper.fetcher  Searching RSS: "Activist Sonam Wangchuk freed as Centre revokes detention" when:48h
+2026-03-15 19:53:41,670  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Activist+Sonam+Wangchuk+freed+as+Centre+revokes+detention%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:42,015  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:42,016  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:42,023  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:42,023  INFO      scraper.fetcher  Searching RSS: "India’s navigation satellite system suffers major setback" when:48h
+2026-03-15 19:53:42,023  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22India%E2%80%99s+navigation+satellite+system+suffers+major+setback%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:42,453  INFO      scraper.fetcher  Fetched 11 entries from feed
+2026-03-15 19:53:42,456  INFO      storage.ingestion  Added 11 new articles to story 35
+2026-03-15 19:53:42,464  INFO      scraper.expander    +11 articles → indias-navigation-satellite-system-suffers-major-setback-1-of-4-operational-irns
+2026-03-15 19:53:42,465  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:42,474  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:42,474  INFO      scraper.fetcher  Searching RSS: "Sabarimala Reference" when:48h
+2026-03-15 19:53:42,474  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Sabarimala+Reference%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:42,741  INFO      scraper.fetcher  Fetched 5 entries from feed
+2026-03-15 19:53:42,744  INFO      storage.ingestion  Added 4 new articles to story 33
+2026-03-15 19:53:42,751  INFO      scraper.expander    +4 articles → sabarimala-reference-consultation-with-religious-scholars-needed-before-judicial
+2026-03-15 19:53:42,753  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:42,765  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:42,765  INFO      scraper.fetcher  Searching RSS: "100 stray dogs poisoned to death in Telangana in another" when:48h
+2026-03-15 19:53:42,765  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22100+stray+dogs+poisoned+to+death+in+Telangana+in+another%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:43,144  INFO      scraper.fetcher  Fetched 6 entries from feed
+2026-03-15 19:53:43,145  INFO      storage.ingestion  Added 5 new articles to story 27
+2026-03-15 19:53:43,151  INFO      scraper.expander    +5 articles → 100-stray-dogs-poisoned-to-death-in-telangana-in-another-incident-toll-touches-1
+2026-03-15 19:53:43,152  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:43,159  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:43,159  INFO      scraper.fetcher  Searching RSS: "‘Conspiracy to malign Yogi government’" when:48h
+2026-03-15 19:53:43,159  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22%E2%80%98Conspiracy+to+malign+Yogi+government%E2%80%99%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:43,454  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:43,456  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:43,472  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:43,472  INFO      scraper.fetcher  Searching RSS: "Air Asia, Batik Air have shown interest to fly to Madurai International Airport" when:48h
+2026-03-15 19:53:43,472  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Air+Asia%2C+Batik+Air+have+shown+interest+to+fly+to+Madurai+International+Airport%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:43,992  INFO      scraper.fetcher  Fetched 9 entries from feed
+2026-03-15 19:53:43,994  INFO      storage.ingestion  Added 8 new articles to story 49
+2026-03-15 19:53:44,002  INFO      scraper.expander    +8 articles → air-asia-batik-air-have-shown-interest-to-fly-to-madurai-international-airport-a
+2026-03-15 19:53:44,003  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:44,012  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:44,012  INFO      scraper.fetcher  Searching RSS: "Indian Embassy alerts travellers from Qatar using Saudi border" when:48h
+2026-03-15 19:53:44,012  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Indian+Embassy+alerts+travellers+from+Qatar+using+Saudi+border%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:44,372  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:44,375  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:44,399  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:44,399  INFO      scraper.fetcher  Searching RSS: "Gujarat’s First Sounding Rocket Launched from Dholera by" when:48h
+2026-03-15 19:53:44,399  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Gujarat%E2%80%99s+First+Sounding+Rocket+Launched+from+Dholera+by%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:44,779  INFO      scraper.fetcher  Fetched 1 entries from feed
+2026-03-15 19:53:44,780  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:44,788  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:44,788  INFO      scraper.fetcher  Searching RSS: "India bars LPG access for households with piped gas" when:48h
+2026-03-15 19:53:44,788  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22India+bars+LPG+access+for+households+with+piped+gas%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:45,220  INFO      scraper.fetcher  Fetched 13 entries from feed
+2026-03-15 19:53:45,226  INFO      storage.ingestion  Added 12 new articles to story 9
+2026-03-15 19:53:45,234  INFO      scraper.expander    +12 articles → india-bars-lpg-access-for-households-with-piped-gas-connections-petroleum-minist
+2026-03-15 19:53:45,235  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:45,243  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:45,243  INFO      scraper.fetcher  Searching RSS: "Bengaluru Couple Paying Rs 60,000 Rent Explains Why The Society Is Worth It | Video" when:48h
+2026-03-15 19:53:45,243  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Bengaluru+Couple+Paying+Rs+60%2C000+Rent+Explains+Why+The+Society+Is+Worth+It+%7C+Video%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:45,610  INFO      scraper.fetcher  Fetched 4 entries from feed
+2026-03-15 19:53:45,613  INFO      storage.ingestion  Added 3 new articles to story 40
+2026-03-15 19:53:45,621  INFO      scraper.expander    +3 articles → bengaluru-couple-paying-rs-60000-rent-explains-why-the-society-is-worth-it-video
+2026-03-15 19:53:45,623  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:45,631  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:45,631  INFO      scraper.fetcher  Searching RSS: "India did all to help" when:48h
+2026-03-15 19:53:45,631  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22India+did+all+to+help%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:45,911  INFO      scraper.fetcher  Fetched 2 entries from feed
+2026-03-15 19:53:45,914  INFO      storage.ingestion  Added 2 new articles to story 44
+2026-03-15 19:53:45,921  INFO      scraper.expander    +2 articles → india-did-all-to-help-iran-envoy-ends-debate-on-sinking-of-iris-dena
+2026-03-15 19:53:45,923  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:45,946  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:45,946  INFO      scraper.fetcher  Searching RSS: "Taxpayers, Take Note" when:48h
+2026-03-15 19:53:45,946  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Taxpayers%2C+Take+Note%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:46,324  INFO      scraper.fetcher  Fetched 3 entries from feed
+2026-03-15 19:53:46,326  INFO      storage.ingestion  Added 2 new articles to story 46
+2026-03-15 19:53:46,344  INFO      scraper.expander    +2 articles → taxpayers-take-note-10-major-income-tax-updates-from-april-1
+2026-03-15 19:53:46,346  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:46,361  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:46,361  INFO      scraper.fetcher  Searching RSS: "No more ‘Chhota Bhai’" when:48h
+2026-03-15 19:53:46,361  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22No+more+%E2%80%98Chhota+Bhai%E2%80%99%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:46,739  INFO      scraper.fetcher  Fetched 5 entries from feed
+2026-03-15 19:53:46,742  INFO      storage.ingestion  Added 5 new articles to story 34
+2026-03-15 19:53:46,751  INFO      scraper.expander    +5 articles → no-more-chhota-bhai-amit-shah-says-bjp-to-go-solo-in-2027-punjab-polls-hindustan
+2026-03-15 19:53:46,754  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:46,773  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:46,774  INFO      scraper.fetcher  Searching RSS: "'I apologise': Trump aide Laura Loomer apologises for" when:48h
+2026-03-15 19:53:46,774  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22%27I+apologise%27%3A+Trump+aide+Laura+Loomer+apologises+for%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:47,154  INFO      scraper.fetcher  Fetched 7 entries from feed
+2026-03-15 19:53:47,158  INFO      storage.ingestion  Added 7 new articles to story 38
+2026-03-15 19:53:47,166  INFO      scraper.expander    +7 articles → i-apologise-trump-aide-laura-loomer-apologises-for-anti-india-posts-on-social-me
+2026-03-15 19:53:47,168  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:47,180  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:47,180  INFO      scraper.fetcher  Searching RSS: "‘I Have A Surprise’" when:48h
+2026-03-15 19:53:47,180  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22%E2%80%98I+Have+A+Surprise%E2%80%99%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:53:47,575  INFO      scraper.fetcher  Fetched 10 entries from feed
+2026-03-15 19:53:47,577  INFO      storage.ingestion  Added 9 new articles to story 36
+2026-03-15 19:53:47,585  INFO      scraper.expander    +9 articles → i-have-a-surprise-engineer-stabs-twin-sister-84-times-with-knife-then-attacks-mo
+2026-03-15 19:53:47,586  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:53:47,594  WARNING   scraper.query_builder  LLM query build failed (litellm.UnsupportedParamsError: gpt-5 models (including gpt-5-codex) don't support temperature=0.0. Only temperature=1 is supported. For gpt-5.1, temperature is supported when reasoning_effort='none' (or not specified, as it defaults to 'none'). To drop unsupported params set `litellm.drop_params = True`); falling back to headline
+2026-03-15 19:53:47,594  INFO      scraper.fetcher  Searching RSS: "Bengali Hindus are being purposely turned into minorities" when:48h
+2026-03-15 19:53:47,594  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=%22Bengali+Hindus+are+being+purposely+turned+into+minorities%22+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:34,853  INFO      __main__  Scrape started at 2026-03-15 18:54:34
+2026-03-15 19:54:34,853  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:35,176  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 19:54:35,194  INFO      storage.ingestion  Ingested 0 new stories, skipped 56 duplicates
+2026-03-15 19:54:35,225  INFO      exporter  Exported 56 story files to /home/apsv/Documents/Dump/Projects_extended/lrc.news.shorts/git_sources/lrc.shorts/content/stories/scraped
+2026-03-15 19:54:35,226  INFO      __main__  Done -- 0 new | 56 skipped | +0 expanded articles | 56 exported  (0.4s)
+2026-03-15 19:54:50,832  INFO      __main__  Scrape started at 2026-03-15 18:54:50
+2026-03-15 19:54:50,833  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:51,215  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 19:54:51,289  INFO      storage.ingestion  Ingested 56 new stories, skipped 0 duplicates
+2026-03-15 19:54:51,303  INFO      scraper.expander  Expanding articles for 56 new stories
+2026-03-15 19:54:51,313  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:54:54,015  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:54:54,016  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:54:54,016  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:54,413  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:54:54,416  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:54:56,456  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:54:56,456  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:54:56,489  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:56,607  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:54:56,608  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:54:59,113  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:54:59,114  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:54:59,114  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:54:59,208  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:54:59,210  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:00,581  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:00,582  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:00,584  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:00,698  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:00,699  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:01,779  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:01,780  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:01,780  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:01,868  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:01,869  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:03,418  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:03,419  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:03,420  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:03,545  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:03,549  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:05,261  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:05,262  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:05,262  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:05,355  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:05,356  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:07,514  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:07,516  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:07,516  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:07,610  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:07,612  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:08,938  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:08,939  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:08,939  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:09,053  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:09,055  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:10,994  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:10,995  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:10,996  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:11,109  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:11,110  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:12,032  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:12,034  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:12,035  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:12,139  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:12,140  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:19,392  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:19,393  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:19,394  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:19,509  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:19,510  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:21,029  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:21,031  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:21,032  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:21,142  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:21,145  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:23,503  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:23,505  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:23,537  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:23,651  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:23,652  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:24,853  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:24,855  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:24,855  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:24,949  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:24,950  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:26,560  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:26,562  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:26,562  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:26,679  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:26,680  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:28,226  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:28,226  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:28,227  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:28,322  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:28,323  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:30,257  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:30,258  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:30,258  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:30,352  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:30,354  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:32,191  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:32,192  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:32,193  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:32,278  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:32,279  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:33,318  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:33,319  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:33,320  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:33,432  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:33,433  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:34,546  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:34,547  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:34,548  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:34,667  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:34,669  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:35,976  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:35,976  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:35,977  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:36,080  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:36,083  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:55:39,871  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 19:55:39,872  INFO      scraper.fetcher  Searching RSS:  when:48h
+2026-03-15 19:55:39,872  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:55:39,958  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 19:55:39,959  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:57:05,642  INFO      __main__  Scrape started at 2026-03-15 18:57:05
+2026-03-15 19:57:07,656  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 19:57:09,187  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 19:57:49,373  INFO      storage.ingestion  Ingested 56 new stories, skipped 0 duplicates
+2026-03-15 19:58:10,899  INFO      scraper.expander  Expanding articles for 56 new stories
+2026-03-15 19:59:07,515  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 19:59:10,223  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 20:00:03,423  INFO      __main__  Scrape started at 2026-03-15 19:00:03
+2026-03-15 20:00:05,783  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 20:00:06,791  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 20:00:06,831  INFO      storage.ingestion  Ingested 0 new stories, skipped 56 duplicates
+2026-03-15 20:00:09,197  INFO      exporter  Exported 56 story files to /home/apsv/Documents/Dump/Projects_extended/lrc.news.shorts/git_sources/lrc.shorts/content/stories/scraped
+2026-03-15 20:00:09,198  INFO      __main__  Done -- 0 new | 56 skipped | +0 expanded articles | 56 exported  (5.8s)
+2026-03-15 20:00:32,297  INFO      __main__  Scrape started at 2026-03-15 19:00:32
+2026-03-15 20:00:33,925  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 20:00:34,317  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 20:00:34,409  INFO      storage.ingestion  Ingested 56 new stories, skipped 0 duplicates
+2026-03-15 20:00:34,463  INFO      scraper.expander  Expanding articles for 56 new stories
+2026-03-15 20:00:46,509  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 20:01:02,541  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 20:01:16,393  INFO      scraper.fetcher  Searching RSS: Asia's Largest Tulip Festival" March 16 "Srinagar" "Kashmir when:48h
+2026-03-15 20:01:16,393  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=Asia%27s+Largest+Tulip+Festival%22+March+16+%22Srinagar%22+%22Kashmir+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 20:01:16,736  INFO      scraper.fetcher  Fetched 0 entries from feed
+2026-03-15 20:02:36,244  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 20:05:39,701  INFO      __main__  Scrape started at 2026-03-15 19:05:39
+2026-03-15 20:05:57,755  INFO      __main__  Scrape started at 2026-03-15 19:05:57
+2026-03-15 20:05:59,360  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/headlines/section/geo/India?hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 20:06:00,209  INFO      scraper.fetcher  Fetched 56 entries from feed
+2026-03-15 20:06:00,344  INFO      storage.ingestion  Ingested 56 new stories, skipped 0 duplicates
+2026-03-15 20:06:00,368  INFO      scraper.expander  Expanding articles for 56 new stories
+2026-03-15 20:06:02,556  INFO      LiteLLM  
+LiteLLM completion() model= gpt-5-nano; provider = openai
+2026-03-15 20:06:25,963  INFO      LiteLLM  Wrapper: Completed Call, calling success_handler
+2026-03-15 20:10:42,290  INFO      scraper.fetcher  Searching RSS: Asia's Largest Tulip Festival" "March 16" "Srinagar when:48h
+2026-03-15 20:10:47,026  INFO      scraper.fetcher  Fetching feed (attempt 1): https://news.google.com/rss/search?q=Asia%27s+Largest+Tulip+Festival%22+%22March+16%22+%22Srinagar+when%3A48h&hl=en-IN&gl=IN&ceid=IN:en
+2026-03-15 20:10:47,477  INFO      scraper.fetcher  Fetched 10 entries from feed

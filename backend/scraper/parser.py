@@ -152,6 +152,33 @@ def parse_entries(entries: list) -> list[dict]:
     return stories
 
 
+def parse_search_entries(entries: list) -> list[dict]:
+    """
+    Parse entries from a Google News RSS *search* result feed.
+
+    Search feed entries are individual articles (not clusters), so the
+    structure is simpler: title, link, and source.title.
+
+    Returns a list of article dicts:
+        {"title": str, "url": str, "source_name": str | None}
+    """
+    articles = []
+    for entry in entries:
+        try:
+            raw_title: str = entry.get("title", "").strip()
+            url: str = entry.get("link", "").strip()
+            if not url:
+                continue
+            # Strip trailing " - Source Name" from the title
+            title = re.sub(r"\s+-\s+[^-]+$", "", raw_title).strip()
+            src = entry.get("source") or {}
+            source_name: str | None = src.get("title") or None
+            articles.append({"title": title, "url": url, "source_name": source_name})
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Skipping search entry: %s", exc)
+    return articles
+
+
 def _parse_entry(entry) -> dict:
     guid = entry.get("id") or entry.get("link") or ""
     if not guid:

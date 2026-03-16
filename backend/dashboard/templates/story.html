@@ -4,7 +4,16 @@
 
 <a class="back-link" href="/">← Back to dashboard</a>
 
-<div class="page-title">{{ story.headline }}</div>
+<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px;">
+  <div class="page-title" style="margin-bottom:0">{{ story.headline }}</div>
+  <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+    <button id="expand-btn" class="btn-action btn-secondary" onclick="runExpand()" style="white-space:nowrap;">Expand coverage</button>
+    <div id="expand-status" class="job-status" style="margin-left:0;">
+      <span id="expand-spinner" class="spinner" style="display:none"></span>
+      <span id="expand-text"></span>
+    </div>
+  </div>
+</div>
 <div class="page-sub">
   {% if story.primary_source %}<strong>{{ story.primary_source }}</strong> &nbsp;·&nbsp;{% endif %}
   Published {{ story.published_at.strftime('%d %b %Y at %H:%M UTC') if story.published_at else 'Unknown' }}
@@ -39,5 +48,54 @@
   <div class="empty">No articles linked to this story.</div>
   {% endfor %}
 </div>
+
+<script>
+const _SLUG = {{ story.slug | tojson }};
+let _pollTimer = null, _elapsedTimer = null, _startTime = 0;
+
+function _setStatus(cls, text, showSpinner) {
+  const wrap = document.getElementById('expand-status');
+  wrap.className = 'job-status ' + cls;
+  document.getElementById('expand-spinner').style.display = showSpinner ? 'inline-block' : 'none';
+  document.getElementById('expand-text').textContent = text;
+}
+
+function _finish(ok, msg) {
+  clearInterval(_elapsedTimer);
+  clearInterval(_pollTimer);
+  document.getElementById('expand-btn').disabled = false;
+  _setStatus(ok ? 'done' : 'error', msg, false);
+  if (ok) setTimeout(() => location.reload(), 1200);
+}
+
+async function runExpand() {
+  document.getElementById('expand-btn').disabled = true;
+  _startTime = Date.now();
+  _setStatus('running', 'Expanding… (0s)', true);
+  clearInterval(_elapsedTimer);
+  _elapsedTimer = setInterval(() => {
+    const s = Math.round((Date.now() - _startTime) / 1000);
+    document.getElementById('expand-text').textContent = `Expanding… (${s}s)`;
+  }, 1000);
+  try {
+    const r = await fetch('/expand/' + _SLUG, { method: 'POST' });
+    if (r.status === 409) { _finish(false, '\u2717 Another job is still running'); return; }
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const { job_id } = await r.json();
+    _pollTimer = setInterval(async () => {
+      try {
+        const pr = await fetch('/job/' + job_id);
+        if (!pr.ok) throw new Error('HTTP ' + pr.status);
+        const j = await pr.json();
+        if (j.status === 'done') {
+          _finish(true, `\u2713 +${j.result.added} article${j.result.added !== 1 ? 's' : ''} added`);
+        } else if (j.status === 'error') {
+          _finish(false, '\u2717 ' + j.error);
+        }
+      } catch(e) { _finish(false, '\u2717 ' + e.message); }
+    }, 3000);
+  } catch(e) { _finish(false, '\u2717 ' + e.message); }
+}
+</script>
 
 {% endblock %}

@@ -95,3 +95,52 @@ def ingest(stories: list[dict]) -> tuple[int, int]:
 
         logger.info("Ingested %d new stories, skipped %d duplicates", new_count, skipped_count)
         return new_count, skipped_count
+
+
+def expand_story_articles(
+    story_id: int, articles: list[dict], start_position: int = 0
+) -> int:
+    """
+    Add new articles to an existing story, skipping any URL already stored
+    for that story (checked in bulk before insert).
+
+    Each dict in `articles` must have at minimum: title, url.
+    Optional keys: source_name.
+
+    Returns the count of articles actually inserted.
+    """
+    if not articles:
+        return 0
+
+    urls = [a["url"] for a in articles]
+
+    with get_session() as session:
+        # Bulk-fetch URLs already present for this story — single query
+        existing_urls: set[str] = {
+            row[0]
+            for row in session.execute(
+                select(Article.url).where(
+                    Article.story_id == story_id,
+                    Article.url.in_(urls),
+                )
+            )
+        }
+
+        added = 0
+        for art in articles:
+            if art["url"] in existing_urls:
+                continue
+            session.add(
+                Article(
+                    story_id=story_id,
+                    title=art["title"],
+                    url=art["url"],
+                    source_name=art.get("source_name"),
+                    position=start_position + added,
+                    is_lead=False,
+                )
+            )
+            added += 1
+
+        logger.info("Added %d new articles to story %d", added, story_id)
+        return added

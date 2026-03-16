@@ -1,4 +1,8 @@
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env if present (no-op when file is absent)
+load_dotenv(Path(__file__).parent / ".env", override=False)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent
@@ -30,8 +34,17 @@ USER_AGENT = (
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
 )
 
-# ── Dashboard ─────────────────────────────────────────────────────────────────
+# ── LLM ──────────────────────────────────────────────────────────────────────
 import os
+
+# Model string passed to litellm.completion — any provider litellm supports.
+# Set the corresponding API key env var (e.g. GEMINI_API_KEY, OPENAI_API_KEY).
+LITELLM_MODEL = os.getenv("LITELLM_MODEL", "gemini/gemini-2.0-flash")
+
+# How many hours back to search when expanding a story's article list
+ARTICLE_EXPAND_HOURS = int(os.getenv("ARTICLE_EXPAND_HOURS", "48"))
+
+# ── Dashboard ─────────────────────────────────────────────────────────────────
 
 DASHBOARD_HOST = os.getenv("DASHBOARD_HOST", "0.0.0.0")
 DASHBOARD_PORT = int(os.getenv("DASHBOARD_PORT", "5000"))

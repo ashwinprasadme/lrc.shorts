@@ -14,11 +14,14 @@ from pathlib import Path
 # Allow imports from backend root when running directly
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+import threading
+import uuid
 from datetime import datetime, timedelta, timezone
 from functools import wraps
 
 from flask import (
     Flask,
+    jsonify,
     redirect,
     render_template,
     request,
@@ -33,8 +36,43 @@ from config import (
     DASHBOARD_SECRET_KEY,
     DASHBOARD_USERNAME,
 )
+from exporter import export_recent
+from scraper.expander import expand_story_by_slug
+from scraper.fetcher import fetch_feed
+from scraper.parser import parse_entries
 from storage.db import get_session, init_db
+from storage.ingestion import ingest
 from storage.models import Article, Story
+
+
+_jobs: dict[str, dict] = {}
+_jobs_lock = threading.Lock()
+
+
+def _run_job(job_id: str, fn) -> None:
+    """Execute fn() in a thread, storing result/error back into _jobs."""
+    try:
+        result = fn()
+        with _jobs_lock:
+            _jobs[job_id]["status"] = "done"
+            _jobs[job_id]["result"] = result
+            _jobs[job_id]["error"] = None
+    except Exception as exc:
+        with _jobs_lock:
+            _jobs[job_id]["status"] = "error"
+            _jobs[job_id]["error"] = str(exc)
+
+
+def _any_running() -> bool:
+    with _jobs_lock:
+        return any(j.get("status") == "running" for j in _jobs.values())
+
+
+def _new_job() -> str:
+    job_id = str(uuid.uuid4())
+    with _jobs_lock:
+        _jobs[job_id] = {"status": "running", "result": None, "error": None}
+    return job_id
 
 
 def create_app() -> Flask:
@@ -156,6 +194,42 @@ def create_app() -> Flask:
             ).mappings().all()
             articles = [dict(a) for a in articles]
         return render_template("story.html", story=story, articles=articles)
+
+    @app.route("/scrape", methods=["POST"])
+    @login_required
+    def scrape():
+        if _any_running():
+            return jsonify({"error": "Another job is already running"}), 409
+        job_id = _new_job()
+        def _scrape():
+            entries = fetch_feed()
+            stories = parse_entries(entries)
+            new, skipped = ingest(stories)
+            exported = export_recent()
+            return {"new": new, "skipped": skipped, "exported": exported}
+        threading.Thread(target=_run_job, args=(job_id, _scrape), daemon=True).start()
+        return jsonify({"job_id": job_id})
+
+    @app.route("/expand/<slug>", methods=["POST"])
+    @login_required
+    def expand(slug: str):
+        if _any_running():
+            return jsonify({"error": "Another job is already running"}), 409
+        job_id = _new_job()
+        def _expand():
+            added = expand_story_by_slug(slug)
+            return {"added": added}
+        threading.Thread(target=_run_job, args=(job_id, _expand), daemon=True).start()
+        return jsonify({"job_id": job_id})
+
+    @app.route("/job/<job_id>")
+    @login_required
+    def job_status(job_id: str):
+        with _jobs_lock:
+            job = _jobs.get(job_id)
+        if job is None:
+            return jsonify({"status": "not_found"}), 404
+        return jsonify(job)
 
     @app.route("/search")
     @login_required
