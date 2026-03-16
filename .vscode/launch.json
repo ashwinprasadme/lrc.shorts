@@ -6,6 +6,57 @@
       "name": "Development server",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "name": "Scraper: run",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/main.py",
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "args": [],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Scraper: dry-run",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/main.py",
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "args": ["--dry-run"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Scraper: run --no-expand",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/main.py",
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "args": ["--no-expand"],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Dashboard: Flask (auto-reload)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "args": ["--app", "dashboard.app:create_app()", "run", "--debug", "--reload", "--port", "5000"],
+      "env": {
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "1"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "autoReload": {
+        "enable": true
+      }
     }
   ]
 }
