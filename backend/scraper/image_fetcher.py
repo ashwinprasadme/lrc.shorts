@@ -124,7 +124,7 @@ class DefaultExtractor(BaseExtractor):
       3. First <img> inside common article-body container selectors.
     """
 
-    # Consent button text / selectors (tried in order; stops at first click)
+    # Consent button text / selectors (tried in order; stops at first click per pass)
     _CONSENT_BUTTONS = [
         # Google's own consent interstitial (consent.google.com)
         'button:has-text("Accept all")',
@@ -132,13 +132,31 @@ class DefaultExtractor(BaseExtractor):
         # OneTrust
         "#onetrust-accept-btn-handler",
         ".onetrust-accept-btn-handler",
-        # Generic
+        # Explicit consent / agree variants
+        'button:has-text("I Consent")',
+        'button:has-text("I consent")',
+        'button:has-text("Consent")',
+        # Generic accept variants
         'button:has-text("Accept All")',
         'button:has-text("Accept")',
         'button:has-text("Agree")',
+        'button:has-text("Allow all")',
+        'button:has-text("Allow All")',
+        'button:has-text("Allow cookies")',
+        'button:has-text("Allow Cookies")',
+        # Dismissal / acknowledgement
+        'button:has-text("Got it")',
+        'button:has-text("Got It")',
+        'button:has-text("OK")',
+        'button:has-text("Ok")',
+        'button:has-text("Okay")',
         'button:has-text("Continue")',
+        'button:has-text("Close")',
+        # ARIA / data-testid fallbacks
         '[aria-label*="Accept"]',
+        '[aria-label*="Consent"]',
         '[data-testid*="accept"]',
+        '[data-testid*="consent"]',
     ]
 
     # CSS selectors for article-body image, tried in order
@@ -158,16 +176,35 @@ class DefaultExtractor(BaseExtractor):
     ]
 
     def handle_consent(self, page) -> None:
-        for sel in self._CONSENT_BUTTONS:
-            try:
-                btn = page.locator(sel).first
-                if btn.is_visible(timeout=1_500):
-                    btn.click()
-                    logger.debug("Clicked consent button: %s", sel)
-                    page.wait_for_load_state("networkidle", timeout=4_000)
-                    return
-            except Exception:  # noqa: BLE001
-                pass
+        # Wait for network to settle so JS-rendered consent dialogs have time to appear
+        try:
+            page.wait_for_load_state("networkidle", timeout=4_000)
+        except Exception:  # noqa: BLE001
+            pass
+
+        # Up to 3 passes to handle multi-step consent flows (some sites show a
+        # second dialog after the first button is clicked)
+        for _attempt in range(3):
+            clicked = False
+            for sel in self._CONSENT_BUTTONS:
+                try:
+                    btn = page.locator(sel).first
+                    if btn.is_visible(timeout=1_000):
+                        btn.click()
+                        logger.debug("Clicked consent button: %s", sel)
+                        try:
+                            page.wait_for_load_state("networkidle", timeout=4_000)
+                        except Exception:  # noqa: BLE001
+                            pass
+                        clicked = True
+                        # break
+                        # Don't break here since some pages have multiple consent dialogs in sequence
+                        # small delay to allow next dialog to appear
+                        page.wait_for_timeout(1000)
+                except Exception:  # noqa: BLE001
+                    pass
+            # if not clicked:
+            #     break  # No more consent dialogs found
 
     def get_image_url(self, page) -> str | None:
         # 1. og:image (fastest, most reliable when present)
@@ -300,16 +337,66 @@ def _extractor_for(url: str) -> BaseExtractor:
 
 # ── Core browser fetch ────────────────────────────────────────────────────────
 
+def _extract_article_text(html: str, url: str) -> str | None:
+    """
+    Parse *html* with newspaper4k and return the article body text, or None
+    if extraction fails or produces no usable content.
+    """
+    try:
+        import newspaper  # noqa: PLC0415
+
+        art = newspaper.article(url, input_html=html, language="en")
+        art.parse()
+        return art.text or None
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("newspaper4k extraction failed for %s: %s", url, exc)
+        return None
+
+
+# CSS selectors tried in order when extracting visible page text as a fallback.
+# Narrower containers are preferred to avoid pulling in nav / footer noise.
+_TEXT_FALLBACK_SELECTORS = [
+    "article",
+    "main",
+    '[role="main"]',
+    '[itemprop="articleBody"]',
+    '[class*="article-body"]',
+    '[class*="story-body"]',
+    '[class*="article-content"]',
+    '[class*="entry-content"]',
+    "body",  # last resort — full visible page text
+]
+
+
+def _page_text_fallback(page) -> str | None:
+    """
+    Extract visible text directly from the rendered page via Playwright.
+
+    Tries progressively broader container selectors and returns the first
+    result with a meaningful amount of text (> 100 chars).  Falls back to
+    the full ``body`` inner text as a last resort.
+    """
+    for sel in _TEXT_FALLBACK_SELECTORS:
+        try:
+            text = page.inner_text(sel, timeout=2_000).strip()
+            if len(text) > 100:
+                logger.debug("page text fallback matched selector %r (%d chars)", sel, len(text))
+                return text
+        except Exception:  # noqa: BLE001
+            pass
+    return None
+
+
 def _fetch_image_and_resolved_url(
     article_url: str,
-) -> tuple[str | None, str | None]:
+) -> tuple[str | None, str | None, str | None]:
     """
     Open *article_url* in a fresh browser context, handle consent popups,
-    then extract the featured image URL.
+    then extract the featured image URL and article body text.
 
-    Returns ``(image_url, resolved_url)`` where *resolved_url* is the final
-    URL after all redirects (e.g. the decoded destination of a Google News
-    link).  Either value may be ``None`` on failure.
+    Returns ``(image_url, resolved_url, body_text)`` where *resolved_url* is
+    the final URL after all redirects (e.g. the decoded destination of a
+    Google News link).  Any value may be ``None`` on failure.
     """
     try:
         browser = _get_browser()
@@ -334,53 +421,65 @@ def _fetch_image_and_resolved_url(
             # Handle consent / cookie popups
             extractor.handle_consent(page)
 
+            # Capture page HTML for text extraction before closing the page
+            html = page.content()
+
             # Extract featured image
             image_url = extractor.get_image_url(page)
-            return image_url, resolved_url
+
+            # Extract article body text via newspaper4k from the rendered HTML
+            body_text = _extract_article_text(html, resolved_url or article_url)
+
+            # If newspaper4k came up empty, fall back to Playwright visible text
+            if not body_text:
+                logger.debug("newspaper4k returned no text for %s — using page text fallback", resolved_url or article_url)
+                body_text = _page_text_fallback(page)
+
+            return image_url, resolved_url, body_text
 
         finally:
             page.close()
             ctx.close()
     except Exception as exc:  # noqa: BLE001
         logger.debug("Browser fetch failed for %s: %s", article_url, exc)
-        return None, None
+        return None, None, None
 
-
-# ── Public API ─────────────────────────────────────────────────────────────────
 
 def download_article_image(
     story_slug: str,
     position: int,
     article_url: str,
-) -> tuple[str | None, str | None, str | None]:
+) -> tuple[str | None, str | None, str | None, str | None]:
     """
-    Fetch and locally cache the featured image for a single article.
+    Fetch and locally cache the featured image for a single article, and
+    extract the article body text via newspaper4k.
 
     Uses the publisher-specific extractor for *article_url*, handles consent
     popups, and saves the image as ``{story_slug}-{position}.jpg`` in
     ``IMAGES_DIR``.
 
-    Returns ``(image_url, filename, resolved_url)`` — all ``None`` on failure.
+    Returns ``(image_url, filename, resolved_url, body_text)`` — all ``None``
+    on failure.
     """
     try:
         from PIL import Image  # noqa: PLC0415
     except ImportError as exc:
         raise ImportError("Pillow is not installed. Run: pip install Pillow") from exc
 
-    image_url, resolved_url = _fetch_image_and_resolved_url(article_url)
+    image_url, resolved_url, body_text = _fetch_image_and_resolved_url(article_url)
 
     if not image_url:
         logger.debug(
             "No featured image found for story %r pos=%d", story_slug, position
         )
-        return None, None, resolved_url
+        return None, None, resolved_url, body_text
 
     if not image_url.startswith(("http://", "https://")):
         logger.warning(
             "Ignoring non-HTTP image URL for story %r pos=%d: %.120s",
             story_slug, position, image_url,
         )
-        return None, None, resolved_url
+        return None, None, resolved_url, body_text
 
     filename = f"{story_slug}-{position}.jpg"
     dest = IMAGES_DIR / filename
@@ -400,7 +499,7 @@ def download_article_image(
                 "Unexpected Content-Type %r for story %r pos=%d; skipping",
                 content_type, story_slug, position,
             )
-            return image_url, None, resolved_url
+            return image_url, None, resolved_url, body_text
 
         img = Image.open(io.BytesIO(resp.content)).convert("RGB")
         IMAGES_DIR.mkdir(parents=True, exist_ok=True)
@@ -408,11 +507,11 @@ def download_article_image(
         logger.info(
             "Saved article image for %r pos=%d → %s", story_slug, position, filename
         )
-        return image_url, filename, resolved_url
+        return image_url, filename, resolved_url, body_text
 
     except Exception as exc:  # noqa: BLE001
         logger.warning(
             "Failed to save article image for story %r pos=%d: %s",
             story_slug, position, exc,
         )
-        return image_url, None, resolved_url
+        return image_url, None, resolved_url, body_text

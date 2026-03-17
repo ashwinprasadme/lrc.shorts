@@ -63,6 +63,7 @@ def _migrate() -> None:
         article_migrations = [
             ("resolved_url", "TEXT"),
             ("image_path",   "VARCHAR"),
+            ("body_text",    "TEXT"),
         ]
         for col, col_type in article_migrations:
             if col not in existing_art:

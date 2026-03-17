@@ -145,7 +145,7 @@ def fetch_article_images(slug: str, max_articles: int = 5) -> list[dict]:
             })
             continue
 
-        image_url, filename, resolved_url = download_article_image(
+        image_url, filename, resolved_url, body_text = download_article_image(
             slug, position, url
         )
 
@@ -156,6 +156,8 @@ def fetch_article_images(slug: str, max_articles: int = 5) -> list[dict]:
                     article.image_path = filename
                 if resolved_url and not article.resolved_url:
                     article.resolved_url = resolved_url
+                if body_text and not article.body_text:
+                    article.body_text = body_text
 
         results.append({
             "article_id": article_id,
@@ -163,6 +165,7 @@ def fetch_article_images(slug: str, max_articles: int = 5) -> list[dict]:
             "image_url": image_url,
             "filename": filename,
             "resolved_url": resolved_url,
+            "body_text": body_text,
         })
 
     logger.info(
@@ -172,6 +175,61 @@ def fetch_article_images(slug: str, max_articles: int = 5) -> list[dict]:
         len(results),
     )
     return results
+
+
+def generate_story_featured_image(slug: str) -> dict:
+    """
+    Generate an AI featured image for the story using the OpenAI Images API.
+
+    Collects article titles and any locally-cached article images, builds the
+    styled prompt from ``scraper/image_gen_prompt.md``, calls the generator,
+    and persists the resulting filename to ``Story.image_path``.
+
+    Returns a dict with keys: filename, image_url, ref_images_used.
+    Raises ValueError if the story does not exist.
+    """
+    from pathlib import Path  # noqa: PLC0415
+
+    from config import IMAGES_DIR  # noqa: PLC0415
+    from scraper.image_generator import generate_featured_image  # noqa: PLC0415
+
+    with get_session() as session:
+        story_row = session.execute(
+            select(Story.id, Story.slug).where(Story.slug == slug)
+        ).one_or_none()
+        if story_row is None:
+            raise ValueError(f"Story not found: {slug!r}")
+        story_id, story_slug = story_row
+
+        article_rows = session.execute(
+            select(Article.title, Article.image_path)
+            .where(Article.story_id == story_id)
+            .order_by(Article.position)
+        ).all()
+
+    headlines = [row.title for row in article_rows]
+    ref_paths: list[Path] = [
+        IMAGES_DIR / row.image_path
+        for row in article_rows
+        if row.image_path
+    ]
+
+    filename, image_url = generate_featured_image(story_slug, headlines, ref_paths)
+
+    if filename:
+        with get_session() as session:
+            story = session.execute(
+                select(Story).where(Story.slug == slug)
+            ).scalar_one()
+            story.image_path = filename
+            if image_url:
+                story.image_url = image_url
+
+    return {
+        "filename": filename,
+        "image_url": image_url,
+        "ref_images_used": len([p for p in ref_paths if p.exists()]),
+    }
 
 
 def expand_story_articles(

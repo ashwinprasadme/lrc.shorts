@@ -57,12 +57,15 @@
         <tbody>
           {% for story in stories %}
           <tr>
-            <td>
+            <td style="width:60px; padding-right:10px;">
               {% if story.image_path %}
-              <img class="story-thumb"
-                   src="/images/{{ story.image_path }}"
-                   alt=""
-                   loading="lazy">
+              <a href="/story/{{ story.slug }}">
+                <img class="story-thumb"
+                     src="/images/{{ story.image_path }}"
+                     alt=""
+                     loading="lazy"
+                     title="{{ story.headline }}">
+              </a>
               {% else %}
               <span class="story-thumb-placeholder"></span>
               {% endif %}

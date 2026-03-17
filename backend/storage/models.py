@@ -106,6 +106,9 @@ class Article(Base):
     # Filename of the locally stored JPEG for this article (relative to IMAGES_DIR)
     image_path: Mapped[str | None] = mapped_column(String, nullable=True)
 
+    # Full article body text extracted via newspaper4k
+    body_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+
     story: Mapped["Story"] = relationship("Story", back_populates="articles")
 
     __table_args__ = (

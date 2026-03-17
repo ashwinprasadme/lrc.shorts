@@ -249,6 +249,18 @@ def create_app() -> Flask:
         threading.Thread(target=_run_job, args=(job_id, _fetch), daemon=True).start()
         return jsonify({"job_id": job_id})
 
+    @app.route("/generate-story-image/<slug>", methods=["POST"])
+    @login_required
+    def generate_story_image_route(slug: str):
+        if _any_running():
+            return jsonify({"error": "Another job is already running"}), 409
+        from storage.ingestion import generate_story_featured_image  # noqa: PLC0415
+        job_id = _new_job()
+        def _generate():
+            return generate_story_featured_image(slug)
+        threading.Thread(target=_run_job, args=(job_id, _generate), daemon=True).start()
+        return jsonify({"job_id": job_id})
+
     @app.route("/job/<job_id>")
     @login_required
     def job_status(job_id: str):

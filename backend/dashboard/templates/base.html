@@ -203,17 +203,17 @@
 
     /* Story thumbnail in table */
     .story-thumb {
-      width: 52px;
-      height: 36px;
+      width: 48px;
+      height: 48px;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 6px;
       display: block;
       background: var(--border);
     }
     .story-thumb-placeholder {
-      width: 52px;
-      height: 36px;
-      border-radius: 4px;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
       background: var(--border);
       display: inline-block;
     }
@@ -227,6 +227,61 @@
       border: 1px solid var(--border);
       display: block;
       margin-bottom: 24px;
+    }
+
+    /* Story hero — headline + featured image side by side */
+    .story-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 700px) {
+      .story-hero { grid-template-columns: 1fr; }
+      .story-hero-image { order: -1; }
+    }
+    .story-hero-content { min-width: 0; }
+    .story-hero-image {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .story-hero-img {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .story-hero-img:hover { opacity: 0.88; }
+    .story-hero-img-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+    }
+    .story-hero-img-placeholder {
+      width: 240px;
+      height: 240px;
+      border-radius: 12px;
+      border: 1px dashed var(--border);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      padding: 16px;
+      line-height: 1.4;
     }
 
     /* Misc */

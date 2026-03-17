@@ -51,6 +51,9 @@ ARTICLE_SELECT_COUNT = int(os.getenv("ARTICLE_SELECT_COUNT", "25"))
 # Maximum articles from the same publisher in the selected set
 ARTICLE_SOURCE_CAP = int(os.getenv("ARTICLE_SOURCE_CAP", "3"))
 
+# ── OpenAI ───────────────────────────────────────────────────────────────────
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 # ── Dashboard ─────────────────────────────────────────────────────────────────
 
 DASHBOARD_HOST = os.getenv("DASHBOARD_HOST", "0.0.0.0")
