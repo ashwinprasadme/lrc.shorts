@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent / ".env", override=False)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-BASE_DIR = Path(__file__).parent
-DATA_DIR = BASE_DIR / "data"
-LOG_DIR  = BASE_DIR / "logs"
-DB_PATH  = DATA_DIR / "news.db"
+BASE_DIR   = Path(__file__).parent
+DATA_DIR   = BASE_DIR / "data"
+LOG_DIR    = BASE_DIR / "logs"
+DB_PATH    = DATA_DIR / "news.db"
+IMAGES_DIR = DATA_DIR / "images"
 
 # ── Feed ───────────────────────────────────────────────────────────────────────
 INDIA_FEED_URL = (

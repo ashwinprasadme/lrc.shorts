@@ -57,6 +57,13 @@ class Story(Base):
         default=lambda: datetime.now(timezone.utc),
     )
 
+    # Original source URL of the featured image (from RSS feed media or og:image)
+    image_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # Filename of the locally stored JPEG (relative to IMAGES_DIR)
+    # e.g. "my-story-slug.jpg"
+    image_path: Mapped[str | None] = mapped_column(String, nullable=True)
+
     # Relationship to clustered articles
     articles: Mapped[list["Article"]] = relationship(
         "Article",
@@ -92,6 +99,12 @@ class Article(Base):
 
     # True only for the primary article of the cluster
     is_lead: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+
+    # Final URL after all redirects (e.g. after Google News decodes the link)
+    resolved_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # Filename of the locally stored JPEG for this article (relative to IMAGES_DIR)
+    image_path: Mapped[str | None] = mapped_column(String, nullable=True)
 
     story: Mapped["Story"] = relationship("Story", back_populates="articles")
 

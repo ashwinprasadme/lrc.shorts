@@ -25,6 +25,7 @@ from flask import (
     redirect,
     render_template,
     request,
+    send_from_directory,
     session,
     url_for,
 )
@@ -35,6 +36,7 @@ from config import (
     DASHBOARD_PASSWORD,
     DASHBOARD_SECRET_KEY,
     DASHBOARD_USERNAME,
+    IMAGES_DIR,
 )
 from exporter import export_recent
 from scraper.expander import expand_story_by_slug
@@ -79,6 +81,8 @@ def create_app() -> Flask:
     app = Flask(__name__, template_folder="templates")
     app.secret_key = DASHBOARD_SECRET_KEY
 
+    init_db()
+
     # Pre-hash the password once at startup
     _pw_hash = generate_password_hash(DASHBOARD_PASSWORD)
 
@@ -111,6 +115,12 @@ def create_app() -> Flask:
     def logout():
         session.clear()
         return redirect(url_for("login"))
+
+    @app.route("/images/<path:filename>")
+    @login_required
+    def serve_image(filename: str):
+        """Serve locally cached featured images."""
+        return send_from_directory(str(IMAGES_DIR), filename)
 
     @app.route("/")
     @login_required
@@ -151,6 +161,7 @@ def create_app() -> Flask:
                 select(
                     Story.id, Story.slug, Story.headline,
                     Story.primary_source, Story.published_at,
+                    Story.image_path,
                     article_count_sq.label("article_count"),
                 )
                 .order_by(Story.published_at.desc())
@@ -176,6 +187,7 @@ def create_app() -> Flask:
                 select(
                     Story.slug, Story.headline, Story.primary_source,
                     Story.published_at, Story.fetched_at,
+                    Story.image_path,
                 )
                 .where(Story.slug == slug)
             ).mappings().one_or_none()
@@ -187,6 +199,7 @@ def create_app() -> Flask:
                 select(
                     Article.title, Article.url,
                     Article.source_name, Article.position, Article.is_lead,
+                    Article.image_path, Article.resolved_url,
                 )
                 .join(Story, Article.story_id == Story.id)
                 .where(Story.slug == slug)
@@ -222,6 +235,20 @@ def create_app() -> Flask:
         threading.Thread(target=_run_job, args=(job_id, _expand), daemon=True).start()
         return jsonify({"job_id": job_id})
 
+    @app.route("/fetch-article-images/<slug>", methods=["POST"])
+    @login_required
+    def fetch_article_images_route(slug: str):
+        if _any_running():
+            return jsonify({"error": "Another job is already running"}), 409
+        from storage.ingestion import fetch_article_images  # noqa: PLC0415
+        job_id = _new_job()
+        def _fetch():
+            results = fetch_article_images(slug)
+            saved = sum(1 for r in results if r.get("filename"))
+            return {"saved": saved, "total": len(results)}
+        threading.Thread(target=_run_job, args=(job_id, _fetch), daemon=True).start()
+        return jsonify({"job_id": job_id})
+
     @app.route("/job/<job_id>")
     @login_required
     def job_status(job_id: str):
@@ -249,6 +276,7 @@ def create_app() -> Flask:
                     select(
                         Story.id, Story.slug, Story.headline,
                         Story.primary_source, Story.published_at,
+                        Story.image_path,
                         article_count_sq.label("article_count"),
                     )
                     .where(Story.headline.ilike(pattern))

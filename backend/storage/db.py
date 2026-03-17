@@ -13,7 +13,7 @@ Usage:
 
 from contextlib import contextmanager
 
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, text
 from sqlalchemy.orm import Session, sessionmaker
 
 from config import DB_PATH
@@ -39,9 +39,41 @@ def _set_sqlite_pragma(dbapi_conn, _):
 _SessionFactory = sessionmaker(bind=_engine, expire_on_commit=False)
 
 
+def _migrate() -> None:
+    """Add new columns to existing tables if they are absent (SQLite ALTER TABLE)."""
+    with _engine.connect() as conn:
+        existing = {
+            row[1]
+            for row in conn.execute(text("PRAGMA table_info(stories)"))
+        }
+        migrations = [
+            ("image_url",  "TEXT"),
+            ("image_path", "VARCHAR"),
+        ]
+        for col, col_type in migrations:
+            if col not in existing:
+                conn.execute(text(f"ALTER TABLE stories ADD COLUMN {col} {col_type}"))
+        conn.commit()
+
+    with _engine.connect() as conn:
+        existing_art = {
+            row[1]
+            for row in conn.execute(text("PRAGMA table_info(articles)"))
+        }
+        article_migrations = [
+            ("resolved_url", "TEXT"),
+            ("image_path",   "VARCHAR"),
+        ]
+        for col, col_type in article_migrations:
+            if col not in existing_art:
+                conn.execute(text(f"ALTER TABLE articles ADD COLUMN {col} {col_type}"))
+        conn.commit()
+
+
 def init_db() -> None:
-    """Create all tables (idempotent — safe to call every startup)."""
+    """Create all tables and apply lightweight column migrations."""
     Base.metadata.create_all(_engine)
+    _migrate()
 
 
 @contextmanager

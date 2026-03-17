@@ -4,3 +4,6 @@ Flask==3.1.0
 python-telegram-bot==21.9
 litellm
 python-dotenv
+Pillow
+requests
+playwright

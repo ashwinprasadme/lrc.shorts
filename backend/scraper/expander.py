@@ -24,7 +24,7 @@ from scraper.parser import parse_search_entries
 from scraper.query_builder import build_search_query
 from scraper.selector import select_articles
 from storage.db import get_session
-from storage.ingestion import expand_story_articles
+from storage.ingestion import expand_story_articles, fetch_article_images
 from storage.models import Story
 
 logger = logging.getLogger(__name__)
@@ -32,7 +32,8 @@ logger = logging.getLogger(__name__)
 
 def expand_story_by_slug(slug: str) -> int:
     """
-    Expand article list for a single story identified by slug.
+    Expand article list for a single story identified by slug, then
+    download the featured image if one hasn't been cached yet.
 
     Returns the number of new articles added, or raises ValueError if the
     slug is not found.
@@ -53,6 +54,12 @@ def expand_story_by_slug(slug: str) -> int:
     added = _expand_one(story)
     if added:
         logger.info("+%d articles → %s", added, story.slug)
+
+    try:
+        fetch_article_images(slug)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Article image fetch failed for %r during expand: %s", slug, exc)
+
     return added
 
 
@@ -92,6 +99,12 @@ def expand_recent_stories(since: datetime) -> int:
                 logger.info("  +%d articles → %s", added, story.slug)
         except Exception as exc:  # noqa: BLE001
             logger.warning("Expansion failed for %r: %s", story.slug, exc)
+            continue
+
+        try:
+            fetch_article_images(story.slug)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Article image fetch failed for %r: %s", story.slug, exc)
 
     return total_added
 

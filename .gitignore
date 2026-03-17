@@ -35,3 +35,4 @@ content/stories/scraped
 backend/data/news.db-shm
 backend/data/news.db-wal
 backend/data/news.db
+backend/data/images

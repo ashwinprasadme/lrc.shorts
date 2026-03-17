@@ -26,16 +26,72 @@ You are a Google News RSS search expert.
 Given a news story headline and a list of related article titles about the SAME \
 story, produce a single focused Google News RSS search query string.
 
+Supported operators — use them precisely:
+- Exact phrase  "term"  — REQUIRED for all proper nouns: people, organisations, \
+places, brands.  e.g. "Elon Musk", "Reserve Bank of India"
+- AND (implicit) — the default; every space-separated term must appear.  \
+Use this as the baseline.
+- OR            — at least one of two alternatives must match (uppercase only). \
+Use only when the story genuinely has two common phrasings.  \
+e.g. "SpaceX" OR "Rocket Lab"
+- Exclude  -term  — prepend a minus sign to remove noise terms that would \
+pull in unrelated stories.  e.g. -cricket when the story is about a different sport.
+- Include  +term  — prepend a plus sign to force a term that might otherwise \
+be treated as optional.  Use sparingly for high-signal disambiguating words.
+
 Rules:
-- Wrap specific proper nouns (people, places, organisations) in double quotes.
-- Terms separated by a space are implicitly AND — use this as the default.
-- Use OR (uppercase) only when an alternate phrasing is genuinely needed.
+- Wrap ALL proper nouns (people, places, organisations, brands) in double quotes.
+- Default to AND (implicit spaces); add OR only when genuinely needed.
+- Use - to exclude terms that would cause false positives.
+- Use + only when a critical disambiguating term must appear in every result.
 - Do NOT use intitle:, allintext:, inurl: or any other field modifier.
 - Be specific enough to retrieve only articles about this exact story.
-- Keep the total query under 12 words (quoted phrases count as one word).
+- Keep the total query under 12 words (quoted phrases count as one word each).
+- Every opening " MUST have a matching closing " — never leave a quote unbalanced.
 - Return ONLY the raw query string — no explanation, no surrounding quotes, \
 no markdown.
 """
+
+
+def _sanitize_query(query: str) -> str:
+    """
+    Fix mismatched/missing quote characters in an LLM-generated query.
+
+    Handles the common failure mode where the model emits  word"  (closing
+    quote present but opening quote missing) by prepending the missing ``"``.
+    Also closes any phrase left open at the end of the string.
+    """
+    tokens = query.split()
+    result: list[str] = []
+    in_phrase = False
+
+    for tok in tokens:
+        starts = tok.startswith('"')
+        ends   = tok.endswith('"') and tok != '"'  # ignore bare lone-quote tokens
+
+        if not in_phrase:
+            if starts and ends and len(tok) > 2:
+                # Properly quoted single token: "word"
+                result.append(tok)
+            elif starts and not ends:
+                # Opening a multi-word phrase: "United
+                in_phrase = True
+                result.append(tok)
+            elif not starts and ends:
+                # Missing opening quote: word" → "word"
+                result.append('"' + tok)
+            else:
+                result.append(tok)
+        else:
+            if ends:
+                in_phrase = False
+            result.append(tok)
+
+    if in_phrase:
+        # Close any phrase that was never closed
+        result[-1] = result[-1] + '"'
+
+    return ' '.join(result)
 
 
 def build_search_query(headline: str, article_titles: list[str]) -> str:
@@ -57,7 +113,8 @@ def build_search_query(headline: str, article_titles: list[str]) -> str:
             # temperature=1.0,
             # max_tokens=80,
         )
-        query = resp.choices[0].message.content.strip().strip('"\'')
+        query = resp.choices[0].message.content.strip().strip("'")
+        query = _sanitize_query(query)
         logger.debug("LLM query for %r → %r", headline[:60], query)
         return query
 
